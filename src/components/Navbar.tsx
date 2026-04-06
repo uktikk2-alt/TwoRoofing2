@@ -149,8 +149,8 @@ export const Navbar = ({ onOpenEstimate, isMobileMenuOpen, setIsMobileMenuOpen }
               </motion.button>
             </div>
             
-            <div className="flex-1 flex flex-col justify-center px-10 relative z-10">
-              <div className="flex flex-col w-full max-w-lg">
+            <div className="flex-1 flex flex-col justify-center items-center px-6 pb-24 relative z-10">
+              <div className="flex flex-col w-full max-w-lg items-center">
                 {mobileNavLinks.map((link, i) => (
                   <div key={link.name} className="relative py-8 border-b border-white/5 overflow-hidden group">
                     <motion.a 
@@ -163,7 +163,7 @@ export const Navbar = ({ onOpenEstimate, isMobileMenuOpen, setIsMobileMenuOpen }
                       }}
                       href={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="flex items-end gap-6 group"
+                      className="flex items-center gap-4 group"
                     >
                       <span className="text-brand-light font-display font-black text-xs mb-1.5 opacity-80 group-hover:opacity-100 transition-opacity">
                         {(i + 1).toString().padStart(2, '0')}

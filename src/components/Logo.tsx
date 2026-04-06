@@ -1,8 +1,8 @@
 import { motion } from 'motion/react';
 
 export const Logo = ({ isScrolled = false, isFooter = false }: { isScrolled?: boolean, isFooter?: boolean }) => {
-  // Logic: When it's not scrolled and not in the footer, it's on a dark hero background (transparent header)
-  const isTransparentHero = !isScrolled && !isFooter;
+  // Logic: Use white logo when on dark background (unscrolled hero OR dark footer/menu)
+  const isWhite = !isScrolled || isFooter;
   
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -20,7 +20,7 @@ export const Logo = ({ isScrolled = false, isFooter = false }: { isScrolled?: bo
           src="/logo.jpg" 
           alt="Two22 Roofing" 
           animate={{ 
-            filter: isTransparentHero ? "brightness(0) invert(1)" : "brightness(1) invert(0)" 
+            filter: isWhite ? "brightness(0) invert(1)" : "brightness(1) invert(0)" 
           }}
           transition={{ duration: 0.4, ease: "easeInOut" }}
           className="h-10 md:h-12 w-auto object-contain rounded-lg" 

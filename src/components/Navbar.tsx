@@ -81,7 +81,7 @@ export const Navbar = ({ onOpenEstimate, isMobileMenuOpen, setIsMobileMenuOpen }
             className="group relative overflow-hidden bg-brand text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-brand/20 transition-all border border-brand-light/30"
           >
             <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]" />
-            <span className="relative z-10">Get Free Estimate</span>
+            <span className="relative z-10">Get a Free Estimate</span>
           </motion.button>
         </motion.div>
 

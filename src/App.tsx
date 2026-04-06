@@ -15,6 +15,14 @@ import RoofingAIAgent from './components/RoofingAIAgent';
 import EstimateModal from './components/EstimateModal';
 import { LenisProvider } from './components/ui/LenisProvider';
 
+const SectionDivider = () => (
+  <div className="w-full h-px relative z-10 flex justify-center overflow-hidden">
+    <div className="w-full h-full bg-gradient-to-r from-transparent via-brand/[0.16] to-transparent" />
+    {/* Subtle soft glow layer */}
+    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-brand/[0.08] to-transparent blur-[2px] -translate-y-1/2" />
+  </div>
+);
+
 export default function App() {
   const [isEstimateModalOpen, setIsEstimateModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -41,13 +49,21 @@ export default function App() {
           setIsMobileMenuOpen={setIsMobileMenuOpen}
         />
         <Hero onOpenEstimate={openEstimate} />
+        <SectionDivider />
         <Stats />
+        <SectionDivider />
         <Services onOpenEstimate={openEstimate} />
+        <SectionDivider />
         <About />
+        <SectionDivider />
         <Team />
+        <SectionDivider />
         <Testimonials />
+        <SectionDivider />
         <Projects />
+        <SectionDivider />
         <EstimateSection onOpenEstimate={openEstimate} />
+        <SectionDivider />
         <Guarantee />
         <Footer />
         {!isMobileMenuOpen && <RoofingAIAgent />}

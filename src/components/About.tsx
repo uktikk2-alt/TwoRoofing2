@@ -3,7 +3,7 @@ import { CheckCircle2 } from 'lucide-react';
 
 export const About = () => {
   return (
-    <section id="about" className="py-16 md:py-20 bg-gradient-to-b from-white via-brand/[0.02] to-white">
+    <section id="about" className="py-12 md:py-16 bg-gradient-to-b from-white via-brand/[0.02] to-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
           <motion.div 
@@ -52,16 +52,16 @@ export const About = () => {
           >
             <div className="text-center lg:text-left">
               <div className="flex justify-center lg:justify-start">
-                <div className="inline-flex items-center gap-2 bg-zinc-50 border border-zinc-200 rounded-full px-4 py-1.5 mb-6">
+                <div className="inline-flex items-center gap-2 bg-zinc-50 border border-zinc-200 rounded-full px-4 py-1.5 mb-2 md:mb-3">
                   <span className="w-1.5 h-1.5 rounded-full bg-brand" />
                   <span className="text-xs font-semibold text-zinc-600">Why Choose TWO22</span>
                 </div>
               </div>
-              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-zinc-900 leading-[1.1] tracking-tight mb-4 md:mb-6">
+              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-zinc-900 leading-[1.1] tracking-tight mb-3 md:mb-4">
                 Roofing You Can Trust in Macomb County
               </h2>
             </div>
-            <p className="text-base md:text-xl text-zinc-500 leading-relaxed mb-8 font-medium">
+            <p className="text-base md:text-xl text-zinc-500 leading-relaxed mb-6 md:mb-8 font-medium">
               Since 1996, our family-owned business has helped countless customers achieve peace of mind within their homes. We pride ourselves on delivering state-of-the-art roofing services to the Macomb, Michigan community. With a dedication to quality craftsmanship and innovative solutions, our team ensures that every project is completed with precision and care.
             </p>
             

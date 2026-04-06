@@ -8,26 +8,26 @@ export const Team = () => {
   ];
 
   return (
-    <section id="team" className="py-16 md:py-20 bg-zinc-900 text-white">
+    <section id="team" className="py-12 md:py-16 bg-zinc-900 text-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Clean centered header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 md:mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-8 md:mb-10">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 mb-4"
+            className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 mb-2 md:mb-3"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-brand" />
             <span className="text-xs font-semibold text-zinc-400">The Experts</span>
           </motion.div>
           <motion.h2 
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-20px" }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 tracking-tight"
+            transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 1, 0.5, 1] }}
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-3 md:mb-4 tracking-tight"
           >
             Meet the Owners
           </motion.h2>

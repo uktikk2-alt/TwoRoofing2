@@ -23,15 +23,15 @@ export const Testimonials = () => {
   const googleReviewsUrl = "https://google.com/maps/place/222+Roofing+%26+Remodeling/@42.7462121,-85.9093664,8z/data=!4m7!3m6!1s0x882521e293ccf8ff:0xe0487b0636cb743f!8m2!3d42.64199!4d-82.8913337!15sChZ0d28yMiByb29maW5nIG1pY2hpZ2FuWhgiFnR3bzIyIHJvb2ZpbmcgbWljaGlnYW6SARJyb29maW5nX2NvbnRyYWN0b3KaASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVTlhkVGxJU2twUkVBReABAPoBBAgAEEs!16s%2Fg%2F11l3q55w_v?entry=tts&g_ep=EgoyMDI2MDQwMS4wIPu8ASoASAFQAw%3D%3D&skid=31b9f812-9fcb-4837-9d1d-e8c58373eae6";
 
   return (
-    <section id="reviews" className="py-16 md:py-20 bg-zinc-50/50">
+    <section id="reviews" className="py-12 md:py-16 bg-zinc-50/50">
       <div className="max-w-7xl mx-auto px-6">
         {/* Updated Header based on reference image */}
-        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-8 md:mb-10">
           <motion.h2 
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-20px" }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
             className="text-3xl sm:text-5xl md:text-6xl font-normal text-zinc-900 mb-6 tracking-tight"
           >
             Reviews from <span className="font-black">real people</span>
@@ -113,7 +113,7 @@ export const Testimonials = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-20px" }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-12 md:mt-16 flex justify-center"
+          className="mt-6 md:mt-8 flex justify-center"
         >
           <a
             href={googleReviewsUrl}

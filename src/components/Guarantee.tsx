@@ -10,7 +10,7 @@ export const Guarantee = () => {
   ];
 
   return (
-    <section className="py-16 md:py-20 bg-white">
+    <section className="py-12 md:py-16 bg-white">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -19,7 +19,7 @@ export const Guarantee = () => {
           transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
           className="max-w-3xl mx-auto text-center"
         >
-          <div className="flex justify-center mb-6 md:mb-8">
+          <div className="flex justify-center mb-2 md:mb-3">
             <motion.div 
               initial={{ scale: 0.9, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
@@ -31,15 +31,15 @@ export const Guarantee = () => {
             </motion.div>
           </div>
 
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-zinc-900 mb-6 lg:mb-8 tracking-tight leading-[1.1] text-wrap">
-            Our Zero-Risk <span className="text-brand">Guarantee</span>
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-black text-zinc-900 mb-3 md:mb-4 tracking-tight leading-[1.1] text-wrap">
+            Our Zero-Risk <span className="text-brand animate-[brandGlow_4s_ease-in-out_infinite]">Guarantee</span>
           </h2>
           
           <p className="text-zinc-500 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto font-medium">
             We stand behind every shingle and spike. If you're not 100% satisfied with our workmanship, we'll make it right. No questions asked.
           </p>
 
-          <div className="mt-10 md:mt-14 bg-zinc-50/80 backdrop-blur-sm border border-zinc-200/60 rounded-[2rem] p-6 sm:p-8 shadow-xl shadow-zinc-200/20">
+          <div className="mt-8 md:mt-12 bg-zinc-50/80 backdrop-blur-sm border border-zinc-200/60 rounded-[2rem] p-6 sm:p-8 shadow-xl shadow-zinc-200/20">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
             {features.map((feature, i) => (
               <motion.div 

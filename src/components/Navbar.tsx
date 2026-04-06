@@ -98,10 +98,10 @@ export const Navbar = ({ onOpenEstimate, isMobileMenuOpen, setIsMobileMenuOpen }
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, clipPath: 'circle(0% at 90% 10%)' }}
-            animate={{ opacity: 1, clipPath: 'circle(150% at 90% 10%)' }}
-            exit={{ opacity: 0, clipPath: 'circle(0% at 90% 10%)' }}
-            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            initial={{ opacity: 0, clipPath: 'polygon(0 0, 0 0, 0 100%, 0% 100%)' }}
+            animate={{ opacity: 1, clipPath: 'polygon(0 0, 100% 0, 100% 100%, 0 100%)' }}
+            exit={{ opacity: 0, clipPath: 'polygon(100% 0, 100% 0, 100% 100%, 100% 100%)' }}
+            transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="fixed inset-0 z-[100] bg-zinc-950 md:hidden flex flex-col overflow-hidden"
           >
             {/* Premium Noise Texture & Gradient */}
@@ -149,57 +149,60 @@ export const Navbar = ({ onOpenEstimate, isMobileMenuOpen, setIsMobileMenuOpen }
               </motion.button>
             </div>
             
-            <div className="flex-1 flex flex-col justify-center items-center px-8 relative z-10">
-              <div className="space-y-6 flex flex-col items-center w-full max-w-sm">
+            <div className="flex-1 flex flex-col justify-center px-10 relative z-10">
+              <div className="flex flex-col w-full max-w-lg">
                 {mobileNavLinks.map((link, i) => (
-                  <div key={link.name} className="overflow-hidden py-2 w-full flex justify-center">
+                  <div key={link.name} className="relative py-8 border-b border-white/5 overflow-hidden group">
                     <motion.a 
-                      initial={{ y: "100%", opacity: 0 }}
+                      initial={{ y: "150%", opacity: 0 }}
                       animate={{ y: "0%", opacity: 1 }}
                       transition={{ 
                         delay: 0.3 + (i * 0.08), 
-                        duration: 0.8, 
-                        ease: [0.22, 1, 0.36, 1] 
+                        duration: 1, 
+                        ease: [0.25, 1, 0.5, 1] 
                       }}
                       href={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="group relative flex items-center justify-center text-4xl sm:text-5xl font-black text-white/50 hover:text-white transition-colors duration-500 tracking-tighter"
+                      className="flex items-end gap-6 group"
                     >
-                      <span className="relative z-10">{link.name}</span>
-                      <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-1 bg-brand rounded-full transition-all duration-500 ease-out group-hover:w-full group-active:w-full" />
-                      <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-brand/20 blur-2xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                      <span className="text-brand font-display font-black text-sm mb-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                        {(i + 1).toString().padStart(2, '0')}
+                      </span>
+                      <span className="text-5xl sm:text-7xl font-black text-white group-hover:text-brand transition-colors duration-500 tracking-tighter">
+                        {link.name}
+                      </span>
                     </motion.a>
+                    <motion.div 
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: 1 }}
+                      transition={{ delay: 0.6 + (i * 0.1), duration: 1 }}
+                      className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-brand/50 to-transparent origin-left"
+                    />
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Footer inside overlay */}
+            {/* Minimal Background Contact Info (Replacing Button) */}
             <motion.div 
-              initial={{ opacity: 0, y: 40 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="p-8 relative z-10 border-t border-white/10 bg-zinc-950/80 backdrop-blur-xl"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1, duration: 1 }}
+              className="p-10 relative z-10 flex items-center justify-between"
             >
-              <div className="flex flex-col items-center gap-6 text-center">
-                <div className="flex flex-col gap-2">
-                  <p className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">Get in touch</p>
-                  <a href="tel:5862656607" className="text-2xl font-black text-white hover:text-brand transition-colors tracking-tight">
-                    (586) 265-6607
-                  </a>
+              <div className="flex flex-col gap-1">
+                <p className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest px-1">Connect</p>
+                <a href="tel:5862656607" className="text-lg font-bold text-white hover:text-brand transition-colors">
+                  (586) 265-6607
+                </a>
+              </div>
+              <div className="flex gap-4">
+                <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-brand hover:border-brand transition-all">
+                  <span className="text-xs font-bold">IG</span>
                 </div>
-                
-                <button 
-                  onClick={() => {
-                    setIsMobileMenuOpen(false);
-                    onOpenEstimate();
-                  }}
-                  className="w-full max-w-sm group relative overflow-hidden bg-brand text-white py-4 rounded-2xl font-bold text-lg shadow-2xl shadow-brand/20 active:scale-95 transition-all flex items-center justify-center gap-2"
-                >
-                  <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out" />
-                  <span className="relative z-10">Get Free Estimate</span>
-                  <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
-                </button>
+                <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-brand hover:border-brand transition-all">
+                  <span className="text-xs font-bold">FB</span>
+                </div>
               </div>
             </motion.div>
           </motion.div>

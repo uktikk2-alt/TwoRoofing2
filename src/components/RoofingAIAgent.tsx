@@ -3,7 +3,16 @@ import { motion, AnimatePresence } from 'motion/react';
 import { MessageSquare, X, Send, Bot, User, Loader2, Calculator, ShieldCheck, Calendar } from 'lucide-react';
 import { GoogleGenAI } from '@google/genai';
 
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+// Safely handle API key. If missing, the agent will show an error message instead of crashing.
+const getApiKey = () => {
+  try {
+    return (process.env && process.env.GEMINI_API_KEY) || '';
+  } catch {
+    return '';
+  }
+};
+
+const ai = new GoogleGenAI({ apiKey: getApiKey() });
 
 interface Message {
   role: 'user' | 'assistant';
@@ -34,6 +43,10 @@ export default function RoofingAIAgent() {
     setIsLoading(true);
 
     try {
+      if (!getApiKey()) {
+        throw new Error("API Key missing");
+      }
+
       const response = await ai.models.generateContent({
         model: 'gemini-3-flash-preview',
         contents: [...messages, { role: 'user', content: userMessage }].map(m => ({
@@ -85,7 +98,10 @@ CONTACT (ONLY IF ASKED OR URGENT):
       setMessages(prev => [...prev, { role: 'assistant', content: aiResponse }]);
     } catch (error) {
       console.error('AI Error:', error);
-      setMessages(prev => [...prev, { role: 'assistant', content: "I'm having trouble connecting right now. Please call our team for immediate assistance!" }]);
+      const errorMsg = !getApiKey() 
+        ? "The AI is currently in 'View Only' mode. Please call our team at (586) 265-6607 for assistance!" 
+        : "I'm having trouble connecting right now. Please call our team for immediate assistance!";
+      setMessages(prev => [...prev, { role: 'assistant', content: errorMsg }]);
     } finally {
       setIsLoading(false);
     }

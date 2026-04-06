@@ -30,7 +30,7 @@ export default function App() {
 
   return (
     <LenisProvider>
-      <div className="relative">
+      <div className="relative flex min-h-screen flex-col overflow-x-clip w-full">
         <motion.div
           className="fixed top-0 left-0 right-0 h-1 bg-brand-accent z-[100] origin-left"
           style={{ scaleX }}

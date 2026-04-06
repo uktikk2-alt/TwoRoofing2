@@ -3,7 +3,7 @@ import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 export const EstimateSection = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => {
   return (
-    <section id="estimate" className="py-16 md:py-24 bg-gradient-to-b from-white via-brand/[0.02] to-white">
+    <section id="estimate" className="py-16 md:py-20 bg-gradient-to-b from-white via-brand/[0.02] to-white">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -20,7 +20,7 @@ export const EstimateSection = ({ onOpenEstimate }: { onOpenEstimate: () => void
                initial={{ opacity: 0, y: 10 }}
                whileInView={{ opacity: 1, y: 0 }}
                viewport={{ once: true, margin: "-20px" }}
-               className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 mb-8"
+               className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 mb-6"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-brand" />
               <span className="text-xs font-semibold text-zinc-400">Get Started</span>
@@ -31,7 +31,7 @@ export const EstimateSection = ({ onOpenEstimate }: { onOpenEstimate: () => void
                whileInView={{ opacity: 1, y: 0 }}
                viewport={{ once: true, margin: "-20px" }}
                transition={{ delay: 0.1 }}
-               className="text-4xl md:text-6xl lg:text-7xl font-black mb-5 tracking-tight text-white leading-[1.1]"
+               className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 tracking-tight text-white leading-[1.1]"
             >
               Request Your <span className="text-brand">Free Estimate</span>
             </motion.h3>
@@ -40,12 +40,12 @@ export const EstimateSection = ({ onOpenEstimate }: { onOpenEstimate: () => void
                whileInView={{ opacity: 1 }}
                viewport={{ once: true, margin: "-20px" }}
                transition={{ delay: 0.2 }}
-               className="text-zinc-400 text-base md:text-lg leading-relaxed mb-10 max-w-lg"
+               className="text-zinc-400 text-base md:text-lg leading-relaxed mb-8 max-w-lg"
             >
               Schedule your professional inspection today. Wendell or Rhonda will contact you within 24 hours.
             </motion.p>
             
-            <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-12">
+            <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-8 md:mb-10">
               {[
                 "No-Obligation Inspection",
                 "Detailed Damage Report",

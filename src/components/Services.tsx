@@ -51,16 +51,16 @@ export const Services = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => 
   const displayedServices = showAll ? services : services.slice(0, 3);
 
   return (
-    <section id="services" className="py-16 md:py-24 bg-gradient-to-b from-white via-brand/[0.02] to-white">
+    <section id="services" className="py-16 md:py-20 bg-gradient-to-b from-white via-brand/[0.02] to-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Clean centered header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 md:mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-10">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 bg-white border border-zinc-200 rounded-full px-4 py-1.5 mb-6"
+            className="inline-flex items-center gap-2 bg-white border border-zinc-200 rounded-full px-4 py-1.5 mb-4"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-brand" />
             <span className="text-xs font-semibold text-zinc-600">Our Expertise</span>
@@ -70,7 +70,7 @@ export const Services = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => 
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-black text-zinc-900 leading-tight mb-5 tracking-tight"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-zinc-900 leading-tight mb-4 tracking-tight"
           >
             Professional Roofing Solutions
           </motion.h2>

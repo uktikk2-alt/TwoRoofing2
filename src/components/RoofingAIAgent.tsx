@@ -87,21 +87,23 @@ export default function RoofingAIAgent() {
 
   return (
     <>
-      <motion.button
-        initial={{ scale: 0, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        onClick={() => setIsOpen(true)}
-        className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 bg-brand text-white p-4 rounded-full shadow-2xl shadow-brand/20 flex items-center justify-center group overflow-hidden"
-      >
-        <MessageSquare className="w-6 h-6 md:w-7 md:h-7" />
-        <motion.div 
-            animate={{ x: [0, -10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="absolute -top-1 -right-1 w-4 h-4 bg-brand rounded-full border-2 border-white"
-        />
-      </motion.button>
+      <AnimatePresence>
+        {!isOpen && (
+          <motion.button
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1, transition: { delay: 2.5, duration: 0.8, ease: [0.25, 1, 0.5, 1] } }}
+            exit={{ scale: 0.8, opacity: 0, transition: { duration: 0.3 } }}
+            whileHover={{ scale: 1.05, y: -4 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setIsOpen(true)}
+            className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[80] bg-white/80 backdrop-blur-xl border border-brand/10 text-brand p-3.5 md:p-4 rounded-full shadow-xl shadow-brand/15 hover:shadow-2xl hover:shadow-brand/25 flex items-center justify-center group transition-all duration-300"
+          >
+            <MessageSquare className="w-5 h-5 md:w-6 md:h-6" />
+            <span className="absolute top-0 right-0 w-2.5 h-2.5 bg-brand rounded-full border-2 border-white" />
+            <span className="absolute top-0 right-0 w-2.5 h-2.5 bg-brand rounded-full animate-ping opacity-75" />
+          </motion.button>
+        )}
+      </AnimatePresence>
 
       <AnimatePresence>
         {isOpen && (

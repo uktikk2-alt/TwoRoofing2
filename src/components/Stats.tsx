@@ -11,9 +11,9 @@ export const Stats = () => {
   ];
 
   return (
-    <section className="py-16 md:py-24 bg-white relative z-20">
+    <section className="py-16 md:py-20 bg-white relative z-20">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-8 md:gap-12">
           {stats.map((stat, i) => {
             const Icon = stat.icon;
             return (
@@ -25,10 +25,10 @@ export const Stats = () => {
                 transition={{ delay: i * 0.1, duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
                 className="text-center flex flex-col items-center"
               >
-                <div className="text-3xl md:text-5xl font-black text-zinc-900 mb-1 md:mb-2 font-display">
+                <div className="text-3xl sm:text-4xl md:text-5xl font-black text-zinc-900 mb-1 md:mb-2 font-display">
                   <Counter value={stat.value} />
                 </div>
-                <div className="text-xs md:text-sm font-medium text-zinc-400 uppercase tracking-widest mb-6">
+                <div className="text-xs md:text-sm font-medium text-zinc-400 uppercase tracking-widest mb-4 md:mb-6">
                   {stat.label}
                 </div>
                 {/* Refined Constant Pulsing Purple Icon */}

@@ -8,7 +8,7 @@ export const Team = () => {
   ];
 
   return (
-    <section id="team" className="py-16 md:py-24 bg-zinc-900 text-white">
+    <section id="team" className="py-16 md:py-20 bg-zinc-900 text-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Clean centered header */}
         <div className="text-center max-w-3xl mx-auto mb-14 md:mb-16">
@@ -17,7 +17,7 @@ export const Team = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 mb-6"
+            className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 mb-4"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-brand" />
             <span className="text-xs font-semibold text-zinc-400">The Experts</span>
@@ -27,7 +27,7 @@ export const Team = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-black mb-5 tracking-tight"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 tracking-tight"
           >
             Meet the Owners
           </motion.h2>
@@ -42,7 +42,9 @@ export const Team = () => {
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 md:gap-12 max-w-5xl mx-auto relative px-4">
+          {/* Subtle background decorative element to fill space */}
+          <div className="absolute inset-0 -z-10 bg-brand/5 blur-[120px] rounded-full scale-150 opacity-50" />
           {team.map((member, i) => (
             <motion.div
               key={member.name}
@@ -50,9 +52,9 @@ export const Team = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-20px" }}
               transition={{ delay: i * 0.12, duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
-              className="group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-white/20 transition-all duration-500"
+              className="group bg-zinc-800/40 backdrop-blur-sm border border-white/5 rounded-[2.5rem] overflow-hidden hover:border-brand/30 transition-all duration-700 hover:shadow-2xl hover:shadow-brand/10"
             >
-              <div className="relative aspect-[4/5] overflow-hidden bg-zinc-800">
+              <div className="relative aspect-[3/4] overflow-hidden">
                 <img 
                   loading="lazy"
                   src={member.image} 
@@ -68,9 +70,9 @@ export const Team = () => {
                   </a>
                 </div>
               </div>
-              <div className="p-6">
-                <h3 className="text-xl font-bold mb-1 tracking-tight">{member.name}</h3>
-                <p className="text-sm font-semibold text-zinc-400 uppercase tracking-wider">{member.role}</p>
+              <div className="p-8 md:p-10 text-center">
+                <h3 className="text-2xl md:text-3xl font-black mb-2 tracking-tight group-hover:text-brand transition-colors duration-500">{member.name}</h3>
+                <p className="text-xs md:text-sm font-bold text-brand uppercase tracking-[0.2em]">{member.role} & Founder</p>
               </div>
             </motion.div>
           ))}

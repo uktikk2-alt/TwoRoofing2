@@ -41,8 +41,8 @@ export const Navbar = ({ onOpenEstimate, isMobileMenuOpen, setIsMobileMenuOpen }
       isScrolled ? "bg-white/80 backdrop-blur-xl shadow-sm py-3" : "bg-transparent"
     )}>
       <div className={cn(
-        "max-w-7xl mx-auto flex items-center justify-between transition-all duration-500",
-        !isScrolled && "bg-zinc-900/40 backdrop-blur-xl border border-white/10 rounded-3xl md:rounded-none md:bg-transparent md:border-none px-6 py-4 md:p-0"
+        "max-w-7xl mx-auto flex items-center justify-between transition-all duration-500 w-full",
+        !isScrolled && "bg-zinc-900/40 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-none md:bg-transparent md:border-none px-4 md:px-6 py-3 md:p-0"
       )}>
         <Logo isScrolled={isScrolled} />
 
@@ -87,10 +87,10 @@ export const Navbar = ({ onOpenEstimate, isMobileMenuOpen, setIsMobileMenuOpen }
 
         {/* Mobile Toggle */}
         <button 
-          className={cn("md:hidden p-2 rounded-lg", isScrolled ? "text-zinc-900" : "text-white")}
+          className={cn("md:hidden p-2 rounded-lg relative z-[110]", isScrolled ? "text-zinc-900" : "text-white")}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          {isMobileMenuOpen ? <X /> : <Menu />}
+          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
         </button>
       </div>
 

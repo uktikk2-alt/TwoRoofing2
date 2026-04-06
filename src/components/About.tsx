@@ -3,9 +3,9 @@ import { CheckCircle2 } from 'lucide-react';
 
 export const About = () => {
   return (
-    <section id="about" className="py-16 md:py-24 bg-gradient-to-b from-white via-brand/[0.02] to-white">
+    <section id="about" className="py-16 md:py-20 bg-gradient-to-b from-white via-brand/[0.02] to-white">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-center">
           <motion.div 
             initial={{ opacity: 0, x: -15 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -36,10 +36,10 @@ export const About = () => {
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true, margin: "-20px" }}
               transition={{ delay: 0.5, duration: 0.6 }}
-              className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 z-20 bg-zinc-900 text-white px-5 md:px-8 py-4 md:py-6 rounded-2xl shadow-xl"
+              className="absolute -bottom-2 -right-2 md:-bottom-4 md:-right-4 z-20 bg-zinc-900/95 backdrop-blur-sm text-white px-4 md:px-6 py-3 md:py-4 rounded-xl shadow-lg border border-white/10"
             >
-              <div className="text-2xl md:text-4xl font-black">20+</div>
-              <div className="text-[10px] md:text-xs font-semibold uppercase tracking-wider text-zinc-400">Years of Experience</div>
+              <div className="text-xl md:text-3xl font-black">20+</div>
+              <div className="text-[9px] md:text-[10px] font-bold uppercase tracking-widest text-zinc-400">Years Excellence</div>
             </motion.div>
           </motion.div>
 
@@ -57,11 +57,11 @@ export const About = () => {
                   <span className="text-xs font-semibold text-zinc-600">Why Choose TWO22</span>
                 </div>
               </div>
-              <h2 className="text-4xl md:text-6xl font-black text-zinc-900 leading-[1.1] tracking-tight mb-6">
+              <h2 className="text-3xl sm:text-5xl lg:text-6xl font-black text-zinc-900 leading-[1.1] tracking-tight mb-4 md:mb-6">
                 Roofing You Can Trust in Macomb County
               </h2>
             </div>
-            <p className="text-base md:text-lg text-zinc-500 leading-relaxed">
+            <p className="text-base md:text-xl text-zinc-500 leading-relaxed mb-8 font-medium">
               Since 1996, our family-owned business has helped countless customers achieve peace of mind within their homes. We pride ourselves on delivering state-of-the-art roofing services to the Macomb, Michigan community. With a dedication to quality craftsmanship and innovative solutions, our team ensures that every project is completed with precision and care.
             </p>
             

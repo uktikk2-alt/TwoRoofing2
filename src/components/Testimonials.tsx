@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Star, ExternalLink } from 'lucide-react';
+import { Star, ExternalLink, Quote } from 'lucide-react';
 
 export const Testimonials = () => {
   const reviews = [
@@ -23,16 +23,16 @@ export const Testimonials = () => {
   const googleReviewsUrl = "https://google.com/maps/place/222+Roofing+%26+Remodeling/@42.7462121,-85.9093664,8z/data=!4m7!3m6!1s0x882521e293ccf8ff:0xe0487b0636cb743f!8m2!3d42.64199!4d-82.8913337!15sChZ0d28yMiByb29maW5nIG1pY2hpZ2FuWhgiFnR3bzIyIHJvb2ZpbmcgbWljaGlnYW6SARJyb29maW5nX2NvbnRyYWN0b3KaASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVTlhkVGxJU2twUkVBReABAPoBBAgAEEs!16s%2Fg%2F11l3q55w_v?entry=tts&g_ep=EgoyMDI2MDQwMS4wIPu8ASoASAFQAw%3D%3D&skid=31b9f812-9fcb-4837-9d1d-e8c58373eae6";
 
   return (
-    <section id="reviews" className="py-16 md:py-24 bg-zinc-50/50">
+    <section id="reviews" className="py-16 md:py-20 bg-zinc-50/50">
       <div className="max-w-7xl mx-auto px-6">
         {/* Updated Header based on reference image */}
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
           <motion.h2 
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-6xl font-normal text-zinc-900 mb-6 tracking-tight"
+            className="text-3xl sm:text-5xl md:text-6xl font-normal text-zinc-900 mb-6 tracking-tight"
           >
             Reviews from <span className="font-black">real people</span>
           </motion.h2>
@@ -51,7 +51,7 @@ export const Testimonials = () => {
           </motion.div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-10 md:gap-12">
+        <div className="grid md:grid-cols-3 gap-8 md:gap-10">
           {reviews.map((review, i) => (
             <motion.div
               key={review.name}
@@ -65,37 +65,43 @@ export const Testimonials = () => {
               }}
               className="relative flex flex-col pt-4 overflow-visible"
             >
-              {/* Speech Bubble */}
-              <div className="relative bg-white p-8 md:p-10 rounded-[2rem] shadow-xl shadow-zinc-200/50 mb-8 border border-zinc-100 flex-grow">
-                <p className="text-zinc-600 text-base md:text-lg leading-relaxed mb-8">
-                  {review.content}
-                </p>
-                
-                <div className="flex items-center gap-1">
+              {/* Speech Bubble / Card */}
+              <div className="relative bg-white p-8 md:p-10 rounded-[2.5rem] shadow-2xl shadow-zinc-200/40 border border-zinc-100 flex flex-col h-full group/card">
+                {/* Quote Icon */}
+                <div className="absolute top-6 right-8 text-brand/10 group-hover/card:text-brand/20 transition-colors">
+                  <Quote className="w-10 h-10 md:w-12 md:h-12 fill-current" />
+                </div>
+
+                <div className="flex items-center gap-1 mb-6">
                   {[...Array(5)].map((_, j) => (
                     <Star key={j} className="w-4 h-4 text-brand fill-brand" />
                   ))}
                 </div>
 
-                {/* Speech Bubble Pointer */}
-                <div className="absolute -bottom-4 left-10 w-8 h-8 bg-white border-r border-b border-zinc-100 transform rotate-45" />
-              </div>
+                <p className="text-zinc-600 text-base md:text-xl leading-relaxed mb-10 flex-grow font-medium italic">
+                  "{review.content}"
+                </p>
+                
+                {/* Reviewer Integrated Bottom Section */}
+                <div className="flex items-center gap-4 pt-6 mt-auto border-t border-zinc-50">
+                  <div className="relative flex-shrink-0">
+                    <div className="absolute -inset-1 bg-brand/20 rounded-full blur-sm opacity-0 group-hover/card:opacity-100 transition-opacity duration-500" />
+                    <img 
+                      loading="lazy"
+                      src={review.image} 
+                      alt={review.name} 
+                      className="w-12 h-12 rounded-full object-cover relative z-10 border-2 border-white shadow-sm"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                  <div className="flex flex-col text-left">
+                    <span className="font-black text-zinc-900 text-base leading-tight">{review.name}</span>
+                    <span className="text-[10px] uppercase tracking-widest text-zinc-400 font-bold">Verified Customer</span>
+                  </div>
+                </div>
 
-              {/* Author Footer (Separated) */}
-              <div className="flex items-center gap-4 pl-4">
-                <div className="relative group">
-                  <div className="absolute -inset-1 bg-gradient-to-tr from-brand to-brand-accent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full blur-md" />
-                  <img 
-                    loading="lazy"
-                    src={review.image} 
-                    alt={review.name} 
-                    className="w-14 h-14 rounded-full object-cover relative z-10 border-2 border-white shadow-sm"
-                    referrerPolicy="no-referrer"
-                  />
-                </div>
-                <div className="font-black text-zinc-900 text-lg tracking-tight">
-                  {review.name}
-                </div>
+                {/* Speech Bubble Pointer */}
+                <div className="absolute -bottom-3 left-12 w-6 h-6 bg-white border-r border-b border-zinc-100 transform rotate-45" />
               </div>
             </motion.div>
           ))}
@@ -107,7 +113,7 @@ export const Testimonials = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-20px" }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-20 md:mt-24 flex justify-center"
+          className="mt-12 md:mt-16 flex justify-center"
         >
           <a
             href={googleReviewsUrl}

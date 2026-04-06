@@ -33,7 +33,7 @@ export const Hero = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-zinc-950 py-20 md:py-0">
+    <section className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-zinc-950 py-16 md:py-0">
       {/* Background Image — no filter animation (was causing paint jitter) */}
       <motion.div 
         initial={{ opacity: 0 }}
@@ -61,7 +61,7 @@ export const Hero = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => {
           className="flex flex-col items-center"
         >
           {/* Badge */}
-          <motion.div variants={item} className="mb-6 md:mb-12">
+          <motion.div variants={item} className="mb-4 md:mb-8 mt-4 md:mt-0">
             <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 backdrop-blur-md px-4 md:px-5 py-2 md:py-2.5 rounded-full text-white/90 text-[10px] md:text-sm font-bold relative overflow-hidden group">
               <div className="absolute inset-0 bg-brand/20 translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-[0.25,1,0.5,1]" />
               <Zap className="w-3 h-3 md:w-4 md:h-4 text-brand-accent animate-[pulse_3s_ease-in-out_infinite] relative z-10" />
@@ -70,25 +70,25 @@ export const Hero = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => {
           </motion.div>
 
           {/* Heading with layered overflow reveal */}
-          <div className="mb-6 md:mb-12 flex flex-col items-center">
-            <div className="overflow-hidden pb-1 md:pb-2">
+          <div className="mb-4 md:mb-8 flex flex-col items-center">
+            <div className="overflow-hidden pb-1 md:pb-2 w-full px-4">
               <motion.h1 
                 variants={textReveal}
-                className="text-4xl sm:text-6xl md:text-[5.5rem] lg:text-[7rem] font-black text-white leading-[1.05] font-display tracking-tight"
+                className="text-4xl sm:text-6xl md:text-[5.5rem] lg:text-[7rem] font-black text-white leading-[1.1] md:leading-[1.05] font-display tracking-tight text-wrap"
               >
                 Macomb's Premier
               </motion.h1>
             </div>
-            <div className="overflow-hidden pb-4">
+            <div className="overflow-hidden pb-4 w-full px-4">
               <motion.h1 
                 variants={textReveal}
-                className="text-4xl sm:text-6xl md:text-[5.5rem] lg:text-[7rem] font-black leading-[1.05] font-display tracking-tight"
+                className="text-4xl sm:text-6xl md:text-[5.5rem] lg:text-[7rem] font-black leading-[1.1] md:leading-[1.05] font-display tracking-tight text-wrap"
               >
                 <motion.span 
                   initial={{ backgroundPosition: "200% 0" }}
                   animate={{ backgroundPosition: "-200% 0" }}
                   transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                  className="text-transparent bg-clip-text bg-gradient-to-r from-brand via-brand-accent to-brand-light bg-[length:200%_auto] pb-2 px-2 inline-block"
+                  className="text-transparent bg-clip-text bg-gradient-to-r from-brand via-brand-accent to-brand-light bg-[length:200%_auto] pb-1 px-1 inline-block"
                 >
                   Roof Specialists
                 </motion.span>
@@ -98,7 +98,7 @@ export const Hero = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => {
 
           {/* Subtext */}
           <motion.div variants={item}>
-             <p className="text-lg md:text-2xl text-zinc-400 max-w-3xl mx-auto mb-10 md:mb-16 leading-relaxed px-2 md:px-0 font-medium">
+             <p className="text-lg md:text-2xl text-zinc-400 max-w-3xl mx-auto mb-8 md:mb-12 leading-relaxed px-2 md:px-0 font-medium">
               Protect what matters most with reliable solutions from TWO22ROOFING, Macomb's go-to experts in superior roofing care.
             </p>
           </motion.div>

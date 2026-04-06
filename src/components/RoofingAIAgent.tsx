@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { MessageSquare, X, Send, Bot, User, Loader2, Minus, MoreHorizontal, Smile, Paperclip, ChevronRight } from 'lucide-react';
+import { MessageSquare, X, Send, Bot, User, Loader2, Minus, MoreHorizontal, SendHorizontal } from 'lucide-react';
 import { GoogleGenAI } from '@google/genai';
 import { cn } from '../lib/utils';
 
@@ -99,7 +99,7 @@ export default function RoofingAIAgent() {
         <motion.div 
             animate={{ x: [0, -10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full border-2 border-white"
+            className="absolute -top-1 -right-1 w-4 h-4 bg-brand rounded-full border-2 border-white"
         />
       </motion.button>
 
@@ -111,14 +111,14 @@ export default function RoofingAIAgent() {
             exit={{ opacity: 0, y: 50, scale: 0.9 }}
             className="fixed bottom-0 right-0 md:bottom-28 md:right-8 z-50 w-full md:w-[420px] h-full md:h-[min(650px,85vh)] bg-white rounded-none md:rounded-[2.5rem] shadow-[0_30px_90px_rgba(0,0,0,0.15)] flex flex-col overflow-hidden border border-zinc-100"
           >
-            {/* Header: Gradient + Profile */}
-            <div className="bg-gradient-to-br from-brand via-brand-accent to-[#4f46e5] px-6 py-8 text-white relative">
+            {/* Header: Pure Brand Purple */}
+            <div className="bg-brand px-6 py-8 text-white relative">
               <div className="flex items-center gap-4">
                 <div className="relative">
                   <div className="w-16 h-16 bg-white rounded-3xl flex items-center justify-center shadow-lg transform -rotate-3">
                     <Bot className="w-9 h-9 text-brand" />
                   </div>
-                  <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-4 border-white animate-pulse" />
+                  <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-white rounded-full border-4 border-brand animate-pulse" />
                 </div>
                 <div>
                   <h3 className="text-xl font-bold tracking-tight">Two22 Assistant</h3>
@@ -145,7 +145,7 @@ export default function RoofingAIAgent() {
                   >
                     <div className={cn(
                       "w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm",
-                      m.role === 'user' ? "bg-white border border-zinc-100 p-1" : "bg-gradient-to-br from-brand to-brand-accent text-white"
+                      m.role === 'user' ? "bg-white border border-zinc-100 p-1" : "bg-brand text-white"
                     )}>
                       {m.role === 'user' ? <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=1974&auto=format&fit=crop" className="w-full h-full rounded-lg object-cover" /> : <Bot className="w-5 h-5" />}
                     </div>
@@ -153,14 +153,14 @@ export default function RoofingAIAgent() {
                     <div className={cn(
                       "p-4 rounded-2xl text-sm leading-relaxed shadow-sm",
                       m.role === 'user' 
-                        ? "bg-gradient-to-r from-brand to-[#4f46e5] text-white rounded-tr-none" 
+                        ? "bg-brand text-white rounded-tr-none" 
                         : "bg-white text-zinc-800 border border-zinc-100 rounded-tl-none"
                     )}>
                       <div className="whitespace-pre-line">{m.content}</div>
                     </div>
                   </motion.div>
 
-                  {/* Options List (like the refernce image) */}
+                  {/* Options Pills */}
                   {m.type === 'pills' && m.options && (
                     <div className="flex flex-wrap gap-2 ml-11">
                       {m.options.map((opt) => (
@@ -174,34 +174,11 @@ export default function RoofingAIAgent() {
                       ))}
                     </div>
                   )}
-
-                  {/* Service Selection List (like the reference image) */}
-                  {m.role === 'assistant' && i === 0 && (
-                    <div className="ml-11 mt-4 bg-white rounded-2xl border border-zinc-100 shadow-xl overflow-hidden divide-y divide-zinc-50 max-w-[90%]">
-                      {[
-                        { title: 'New Roof Installation', icon: '🏠' },
-                        { title: 'Emergency Repair', icon: '🛠️' },
-                        { title: 'Inspection Booking', icon: '📝' }
-                      ].map((item) => (
-                        <button
-                          key={item.title}
-                          onClick={() => handleSend(item.title)}
-                          className="w-full px-5 py-4 flex items-center justify-between hover:bg-zinc-50 transition-colors group"
-                        >
-                          <div className="flex items-center gap-3">
-                            <span className="text-xl">{item.icon}</span>
-                            <span className="text-sm font-bold text-zinc-900 group-hover:text-brand transition-colors">{item.title}</span>
-                          </div>
-                          <ChevronRight className="w-4 h-4 text-zinc-300 group-hover:text-brand group-hover:translate-x-0.5 transition-all" />
-                        </button>
-                      ))}
-                    </div>
-                  )}
                 </div>
               ))}
               {isLoading && (
                 <div className="flex gap-3 max-w-[85%]">
-                  <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-brand to-brand-accent text-white flex items-center justify-center">
+                  <div className="w-8 h-8 rounded-xl bg-brand text-white flex items-center justify-center">
                     <Loader2 className="w-4 h-4 animate-spin" />
                   </div>
                   <div className="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-zinc-100">
@@ -215,7 +192,7 @@ export default function RoofingAIAgent() {
               )}
             </div>
 
-            {/* Input: Redesigned like reference */}
+            {/* Input: Pure Brand Purple Send Button + Visible Typeform */}
             <div className="p-6 bg-white border-t border-zinc-100">
               <div className="flex items-center gap-3">
                 <div className="relative flex-1 group">
@@ -225,19 +202,15 @@ export default function RoofingAIAgent() {
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleSend()}
                     placeholder="Type and press [enter]"
-                    className="w-full pl-5 pr-20 py-4 bg-zinc-50 border border-transparent rounded-2xl text-sm focus:bg-white focus:border-brand/20 transition-all outline-none font-medium placeholder:text-zinc-400"
+                    className="w-full px-5 py-4 bg-zinc-100 border border-zinc-200 rounded-2xl text-sm focus:bg-white focus:border-brand/40 transition-all outline-none font-medium placeholder:text-zinc-400"
                   />
-                  <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-2 text-zinc-400 pr-1 border-l border-zinc-200 ml-2 pl-3">
-                    <button className="hover:text-brand transition-colors"><Smile className="w-5 h-5" /></button>
-                    <button className="hover:text-brand transition-colors md:block hidden"><Paperclip className="w-5 h-5" /></button>
-                  </div>
                 </div>
                 <button
                   onClick={() => handleSend()}
                   disabled={!input.trim() || isLoading}
-                  className="p-3.5 bg-zinc-100 hover:bg-brand text-zinc-400 hover:text-white rounded-full transition-all duration-300 disabled:opacity-50 shadow-sm"
+                  className="p-4 bg-brand text-white border-none rounded-full transition-all duration-300 disabled:opacity-50 shadow-lg shadow-brand/20 flex items-center justify-center"
                 >
-                  <Send className="w-6 h-6" />
+                  <SendHorizontal className="w-6 h-6" />
                 </button>
               </div>
             </div>

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { MessageSquare, X, Send, Bot, User, Loader2, Minus, MoreHorizontal, SendHorizontal } from 'lucide-react';
+import { MessageSquare, X, SendHorizontal, Bot, User, Loader2 } from 'lucide-react';
 import { GoogleGenAI } from '@google/genai';
 import { cn } from '../lib/utils';
 
@@ -111,7 +111,7 @@ export default function RoofingAIAgent() {
             exit={{ opacity: 0, y: 50, scale: 0.9 }}
             className="fixed bottom-0 right-0 md:bottom-28 md:right-8 z-50 w-full md:w-[420px] h-full md:h-[min(650px,85vh)] bg-white rounded-none md:rounded-[2.5rem] shadow-[0_30px_90px_rgba(0,0,0,0.15)] flex flex-col overflow-hidden border border-zinc-100"
           >
-            {/* Header: Pure Brand Purple */}
+            {/* Header: Brand Purple */}
             <div className="bg-brand px-6 py-8 text-white relative">
               <div className="flex items-center gap-4">
                 <div className="relative">
@@ -126,8 +126,12 @@ export default function RoofingAIAgent() {
                 </div>
               </div>
               <div className="absolute top-4 right-4 flex items-center gap-1">
-                <button className="p-2 hover:bg-white/10 rounded-full transition-colors"><MoreHorizontal className="w-5 h-5" /></button>
-                <button className="p-2 hover:bg-white/10 rounded-full transition-colors" onClick={() => setIsOpen(false)}><Minus className="w-5 h-5" /></button>
+                <button 
+                  onClick={() => setIsOpen(false)} 
+                  className="p-2 hover:bg-white/10 rounded-full transition-colors"
+                >
+                  <X className="w-6 h-6" />
+                </button>
               </div>
             </div>
 
@@ -147,7 +151,15 @@ export default function RoofingAIAgent() {
                       "w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm",
                       m.role === 'user' ? "bg-white border border-zinc-100 p-1" : "bg-brand text-white"
                     )}>
-                      {m.role === 'user' ? <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=1974&auto=format&fit=crop" className="w-full h-full rounded-lg object-cover" /> : <Bot className="w-5 h-5" />}
+                      {m.role === 'user' ? (
+                        <img 
+                          src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=1974&auto=format&fit=crop" 
+                          className="w-full h-full rounded-lg object-cover" 
+                          referrerPolicy="no-referrer"
+                        />
+                      ) : (
+                        <Bot className="w-5 h-5" />
+                      )}
                     </div>
                     
                     <div className={cn(
@@ -201,7 +213,7 @@ export default function RoofingAIAgent() {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                     onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                    placeholder="Type and press [enter]"
+                    placeholder="type here"
                     className="w-full px-5 py-4 bg-zinc-100 border border-zinc-200 rounded-2xl text-sm focus:bg-white focus:border-brand/40 transition-all outline-none font-medium placeholder:text-zinc-400"
                   />
                 </div>

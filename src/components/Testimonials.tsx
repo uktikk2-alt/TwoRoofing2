@@ -28,19 +28,19 @@ export const Testimonials = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16 md:mb-24">
           <motion.h2 
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
             className="text-4xl md:text-6xl font-black text-zinc-900 mb-6"
           >
             Client Stories
           </motion.h2>
           <motion.div 
-            initial={{ opacity: 0, scale: 0.5 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.3, type: "spring" }}
+            transition={{ delay: 0.3, duration: 0.6 }}
             className="flex items-center justify-center gap-1 text-brand mb-6"
           >
             {[...Array(5)].map((_, i) => <Star key={i} className="w-6 h-6 fill-current" />)}
@@ -49,7 +49,7 @@ export const Testimonials = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.5 }}
+            transition={{ delay: 0.4, duration: 0.6 }}
             className="text-zinc-500 text-lg font-medium"
           >
             Rated 4.9/5 based on 800+ local reviews
@@ -60,38 +60,30 @@ export const Testimonials = () => {
           {reviews.map((review, i) => (
             <motion.div
               key={review.name}
-              initial={{ opacity: 0, y: 60 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-50px" }}
               transition={{ 
-                type: "spring", 
-                bounce: 0.4, 
-                duration: 1, 
-                delay: i * 0.15 
+                duration: 0.8, 
+                ease: [0.25, 1, 0.5, 1],
+                delay: i * 0.12 
               }}
-              whileHover={{ 
-                y: -12, 
-                scale: 1.02,
-                backgroundColor: "#ffffff",
-                boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.08)"
-              }}
-              className="bg-zinc-50/80 p-8 sm:p-10 md:p-14 rounded-[2.5rem] md:rounded-[3.5rem] border border-zinc-100 relative group"
+              className="bg-zinc-50/80 p-8 sm:p-10 md:p-14 rounded-[2.5rem] md:rounded-[3.5rem] border border-zinc-100 relative group hover:bg-white hover:shadow-[0_25px_50px_-12px_rgba(0,0,0,0.06)] hover:-translate-y-1 transition-all duration-500"
             >
-              <div className="absolute -top-7 left-12 w-14 h-14 bg-brand rounded-2xl flex items-center justify-center text-white shadow-xl shadow-brand/20 group-hover:scale-110 group-hover:rotate-12 transition-transform">
+              <div className="absolute -top-7 left-12 w-14 h-14 bg-brand rounded-2xl flex items-center justify-center text-white shadow-xl shadow-brand/20 transition-transform duration-500">
                 <Star className="w-7 h-7 fill-current" />
               </div>
               <p className="text-zinc-700 text-lg md:text-xl leading-relaxed mb-10 italic font-medium">"{review.content}"</p>
               <div className="flex items-center gap-5">
                 <div className="relative">
-                  <motion.img 
-                    whileHover={{ scale: 1.1 }}
+                  <img 
                     loading="lazy"
                     src={review.image} 
                     alt={review.name} 
                     className="w-16 h-16 rounded-2xl object-cover shadow-lg relative z-10"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute inset-0 bg-brand rounded-2xl blur-md opacity-0 group-hover:opacity-40 transition-opacity" />
+                  <div className="absolute inset-0 bg-brand rounded-2xl blur-md opacity-0 group-hover:opacity-30 transition-opacity duration-500" />
                 </div>
                 <div>
                   <div className="font-black text-zinc-900 text-lg">{review.name}</div>

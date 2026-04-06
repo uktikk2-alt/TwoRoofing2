@@ -47,26 +47,43 @@ export const Navbar = ({ onOpenEstimate, isMobileMenuOpen, setIsMobileMenuOpen }
         <Logo isScrolled={isScrolled} />
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8">
+        <motion.div 
+          initial="hidden"
+          animate="show"
+          variants={{
+            hidden: { opacity: 0 },
+            show: {
+              opacity: 1,
+              transition: { staggerChildren: 0.05, delayChildren: 0.2 }
+            }
+          }}
+          className="hidden md:flex items-center gap-8"
+        >
           {navLinks.map((link) => (
-            <a 
+            <motion.a 
               key={link.name} 
               href={link.href}
+              variants={{ hidden: { opacity: 0, y: -10 }, show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 300, damping: 20 } } }}
               className={cn(
-                "text-sm font-semibold transition-colors hover:text-brand",
+                "text-sm font-bold transition-colors hover:text-brand relative group",
                 isScrolled ? "text-zinc-600" : "text-white/80"
               )}
             >
-              {link.name}
-            </a>
+              <span className="relative z-10">{link.name}</span>
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-brand transition-all duration-300 group-hover:w-full" />
+            </motion.a>
           ))}
-          <button 
+          <motion.button 
+            variants={{ hidden: { opacity: 0, scale: 0.9 }, show: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 300, damping: 20 } } }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
             onClick={onOpenEstimate}
-            className="bg-brand hover:bg-brand-dark text-white px-6 py-2.5 rounded-full font-bold text-sm transition-all shadow-lg shadow-brand/20 active:scale-95"
+            className="group relative overflow-hidden bg-brand text-white px-6 py-2.5 rounded-full font-bold text-sm shadow-lg shadow-brand/20 transition-all border border-brand-light/30"
           >
-            Get Free Estimate
-          </button>
-        </div>
+            <div className="absolute inset-0 bg-white/20 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-[0.16,1,0.3,1]" />
+            <span className="relative z-10">Get Free Estimate</span>
+          </motion.button>
+        </motion.div>
 
         {/* Mobile Toggle */}
         <button 
@@ -81,10 +98,10 @@ export const Navbar = ({ onOpenEstimate, isMobileMenuOpen, setIsMobileMenuOpen }
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0, clipPath: 'circle(0% at 90% 10%)' }}
+            animate={{ opacity: 1, clipPath: 'circle(150% at 90% 10%)' }}
+            exit={{ opacity: 0, clipPath: 'circle(0% at 90% 10%)' }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="fixed inset-0 z-[100] bg-zinc-950 md:hidden flex flex-col overflow-hidden"
           >
             {/* Premium Noise Texture & Gradient */}

@@ -12,6 +12,7 @@ import { EstimateSection } from './components/EstimateSection';
 import { Footer } from './components/Footer';
 import RoofingAIAgent from './components/RoofingAIAgent';
 import EstimateModal from './components/EstimateModal';
+import { LenisProvider } from './components/ui/LenisProvider';
 
 export default function App() {
   const [isEstimateModalOpen, setIsEstimateModalOpen] = useState(false);
@@ -27,27 +28,29 @@ export default function App() {
   const closeEstimate = () => setIsEstimateModalOpen(false);
 
   return (
-    <div className="relative">
-      <motion.div
-        className="fixed top-0 left-0 right-0 h-1 bg-brand-accent z-[100] origin-left"
-        style={{ scaleX }}
-      />
-      <Navbar 
-        onOpenEstimate={openEstimate} 
-        isMobileMenuOpen={isMobileMenuOpen}
-        setIsMobileMenuOpen={setIsMobileMenuOpen}
-      />
-      <Hero onOpenEstimate={openEstimate} />
-      <Stats />
-      <Services onOpenEstimate={openEstimate} />
-      <About />
-      <Team />
-      <Testimonials />
-      <Projects />
-      <EstimateSection />
-      <Footer />
-      {!isMobileMenuOpen && <RoofingAIAgent />}
-      <EstimateModal isOpen={isEstimateModalOpen} onClose={closeEstimate} />
-    </div>
+    <LenisProvider>
+      <div className="relative">
+        <motion.div
+          className="fixed top-0 left-0 right-0 h-1 bg-brand-accent z-[100] origin-left"
+          style={{ scaleX }}
+        />
+        <Navbar 
+          onOpenEstimate={openEstimate} 
+          isMobileMenuOpen={isMobileMenuOpen}
+          setIsMobileMenuOpen={setIsMobileMenuOpen}
+        />
+        <Hero onOpenEstimate={openEstimate} />
+        <Stats />
+        <Services onOpenEstimate={openEstimate} />
+        <About />
+        <Team />
+        <Testimonials />
+        <Projects />
+        <EstimateSection />
+        <Footer />
+        {!isMobileMenuOpen && <RoofingAIAgent />}
+        <EstimateModal isOpen={isEstimateModalOpen} onClose={closeEstimate} />
+      </div>
+    </LenisProvider>
   );
 }

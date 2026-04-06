@@ -100,29 +100,27 @@ export const Services = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => 
               {displayedServices.map((service, i) => (
                 <motion.div
                   key={service.title}
-                  layout
-                  initial={{ opacity: 0, y: 60 }}
+                  initial={{ opacity: 0, y: 40 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  viewport={{ once: true, margin: "-100px" }}
+                  exit={{ opacity: 0 }}
+                  viewport={{ once: true, margin: "-80px" }}
                   transition={{ 
-                    delay: showAll && i >= 3 ? (i - 3) * 0.1 : i * 0.2, 
-                    duration: 1, 
-                    ease: [0.16, 1, 0.3, 1] 
+                    delay: showAll && i >= 3 ? (i - 3) * 0.1 : i * 0.15, 
+                    duration: 0.9, 
+                    ease: [0.25, 1, 0.5, 1] 
                   }}
-                  whileHover={{ y: -15, rotateX: 2, rotateY: 2 }}
-                  className="group relative bg-white rounded-[2.5rem] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-zinc-100 perspective-1000"
+                  className="group relative bg-white rounded-[2.5rem] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(121,31,120,0.1)] hover:-translate-y-2 transition-all duration-500 border border-zinc-100"
                 >
                   <div className="h-64 md:h-80 overflow-hidden relative bg-zinc-100">
                     <motion.img 
                       src={service.image} 
                       alt={service.title} 
                       loading={i > 2 ? "lazy" : "eager"}
-                      className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       referrerPolicy="no-referrer"
                     />
-                    <div className="absolute inset-0 bg-brand/0 group-hover:bg-brand/10 transition-colors duration-500" />
-                    <div className="absolute top-6 right-6 w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-brand shadow-xl group-hover:rotate-12 transition-transform">
+                    <div className="absolute inset-0 bg-brand/0 group-hover:bg-brand/10 transition-colors duration-700 ease-out" />
+                    <div className="absolute top-6 right-6 w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-brand shadow-xl transition-transform duration-500">
                       <service.icon className="w-6 h-6" />
                     </div>
                   </div>

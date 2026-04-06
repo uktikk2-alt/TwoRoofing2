@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Quote, ExternalLink } from 'lucide-react';
+import { Star, ExternalLink } from 'lucide-react';
 
 export const Testimonials = () => {
   const reviews = [
@@ -23,7 +23,7 @@ export const Testimonials = () => {
   const googleReviewsUrl = "https://google.com/maps/place/222+Roofing+%26+Remodeling/@42.7462121,-85.9093664,8z/data=!4m7!3m6!1s0x882521e293ccf8ff:0xe0487b0636cb743f!8m2!3d42.64199!4d-82.8913337!15sChZ0d28yMiByb29maW5nIG1pY2hpZ2FuWhgiFnR3bzIyIHJvb2ZpbmcgbWljaGlnYW6SARJyb29maW5nX2NvbnRyYWN0b3KaASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVTlhkVGxJU2twUkVBReABAPoBBAgAEEs!16s%2Fg%2F11l3q55w_v?entry=tts&g_ep=EgoyMDI2MDQwMS4wIPu8ASoASAFQAw%3D%3D&skid=31b9f812-9fcb-4837-9d1d-e8c58373eae6";
 
   return (
-    <section id="reviews" className="py-16 md:py-24 bg-gradient-to-b from-white via-brand/[0.02] to-white">
+    <section id="reviews" className="py-16 md:py-24 bg-zinc-50/50">
       <div className="max-w-7xl mx-auto px-6">
         {/* Clean centered header */}
         <div className="text-center max-w-3xl mx-auto mb-14 md:mb-16">
@@ -32,10 +32,10 @@ export const Testimonials = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 bg-white border border-zinc-200 rounded-full px-4 py-1.5 mb-6"
+            className="inline-flex items-center gap-2 bg-white border border-zinc-200 rounded-full px-4 py-1.5 mb-6 shadow-sm"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-brand" />
-            <span className="text-xs font-semibold text-zinc-600">Client Stories</span>
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            <span className="text-xs font-semibold text-zinc-600 uppercase tracking-wider">Client Reviews</span>
           </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 15 }}
@@ -57,7 +57,7 @@ export const Testimonials = () => {
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid md:grid-cols-3 gap-10 md:gap-12">
           {reviews.map((review, i) => (
             <motion.div
               key={review.name}
@@ -69,23 +69,37 @@ export const Testimonials = () => {
                 ease: [0.25, 1, 0.5, 1],
                 delay: i * 0.1 
               }}
-              className="bg-[#f8fafc] p-10 md:p-12 rounded-[2.5rem] border border-zinc-100/50 shadow-[0_20px_50px_rgba(147,51,234,0.06)] hover:shadow-[0_20px_50px_rgba(147,51,234,0.12)] hover:-translate-y-1 transition-all duration-500 flex flex-col items-start"
+              className="relative flex flex-col pt-4 overflow-visible"
             >
-              <Quote className="w-12 h-12 text-brand mb-8 fill-brand opacity-80" />
-              
-              <p className="text-zinc-900 text-lg md:text-xl font-bold leading-snug mb-10 tracking-tight">
-                {review.content}
-              </p>
+              {/* Speech Bubble */}
+              <div className="relative bg-white p-8 md:p-10 rounded-[2rem] shadow-xl shadow-zinc-200/50 mb-8 border border-zinc-100 flex-grow">
+                <p className="text-zinc-600 text-base md:text-lg leading-relaxed mb-8">
+                  {review.content}
+                </p>
+                
+                <div className="flex items-center gap-1">
+                  {[...Array(5)].map((_, j) => (
+                    <Star key={j} className="w-4 h-4 text-emerald-500 fill-emerald-500" />
+                  ))}
+                </div>
 
-              <div className="flex items-center gap-4 mt-auto">
-                <img 
-                  loading="lazy"
-                  src={review.image} 
-                  alt={review.name} 
-                  className="w-12 h-12 rounded-full object-cover"
-                  referrerPolicy="no-referrer"
-                />
-                <div className="font-bold text-zinc-900 text-lg tracking-tight">
+                {/* Speech Bubble Pointer */}
+                <div className="absolute -bottom-4 left-10 w-8 h-8 bg-white border-r border-b border-zinc-100 transform rotate-45" />
+              </div>
+
+              {/* Author Footer (Separated) */}
+              <div className="flex items-center gap-4 pl-4">
+                <div className="relative group">
+                  <div className="absolute -inset-1 bg-gradient-to-tr from-emerald-500 to-brand opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-full blur-md" />
+                  <img 
+                    loading="lazy"
+                    src={review.image} 
+                    alt={review.name} 
+                    className="w-14 h-14 rounded-full object-cover relative z-10 border-2 border-white shadow-sm"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+                <div className="font-black text-zinc-900 text-lg tracking-tight">
                   {review.name}
                 </div>
               </div>
@@ -99,7 +113,7 @@ export const Testimonials = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-20px" }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-12 md:mt-16 flex justify-center"
+          className="mt-20 md:mt-24 flex justify-center"
         >
           <a
             href={googleReviewsUrl}

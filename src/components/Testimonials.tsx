@@ -1,24 +1,21 @@
 import { motion } from 'motion/react';
-import { Star, ExternalLink } from 'lucide-react';
+import { Quote, ExternalLink } from 'lucide-react';
 
 export const Testimonials = () => {
   const reviews = [
     {
-      name: 'Peter',
-      role: 'Homeowner',
-      content: 'In my opinion this is the MOST trusted family owned Roofing company I know! TWO22 - Everything they promised was done to perfection. I can not say enough how satisfied I am with their professionalism, work ethic, knowledge and their installation crew.',
+      name: 'John Bennett',
+      content: 'Two22 came out same day and fixed the shingles on my roof before it rained. Always responsive and good quality work at an affordable price. I will keep using this company and recommend them to others.',
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop'
     },
     {
-      name: 'Walter Motte',
-      role: 'Homeowner',
-      content: 'Wendell replaced a flashing boot in my roof. Excellent job, good price. I found him and his wife Rhonda on the internet, great reviews. I recommend Two 22 roofing to anyone!',
+      name: 'Tin Man',
+      content: 'Excellent service from start to finish! 222 Roofing did an amazing job on my roof. The crew showed up on time, worked efficiently, and cleaned up everything before they left. The quality of their work is top-notch, and they took the time to explain what needed to be done and why.',
       image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop'
     },
     {
-      name: 'Local Neighbor',
-      role: 'Homeowner',
-      content: 'Wendell was awesome, went above the call and took great care in doing my roof, quality work at a reasonable price and clean up all the scrap. Not much more you could ask for, extra effort and all around good guy.',
+      name: 'T Gurecki',
+      content: 'Wendel is very professional and prompt. He listened to my concerns and addressed my issues and other issues he discovered. Very honest and hard working. I highly recommend Wendel and his company.',
       image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1976&auto=format&fit=crop'
     }
   ];
@@ -72,23 +69,24 @@ export const Testimonials = () => {
                 ease: [0.25, 1, 0.5, 1],
                 delay: i * 0.1 
               }}
-              className="bg-white p-6 md:p-8 rounded-2xl border border-zinc-200/80 hover:border-zinc-300 hover:shadow-lg hover:-translate-y-1 transition-all duration-500"
+              className="bg-white p-8 md:p-10 rounded-3xl border border-zinc-100 hover:border-zinc-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 flex flex-col items-start"
             >
-              <div className="flex items-center gap-1 mb-5">
-                {[...Array(5)].map((_, j) => <Star key={j} className="w-4 h-4 text-yellow-400 fill-current" />)}
-              </div>
-              <p className="text-zinc-600 text-sm md:text-base leading-relaxed mb-6">"{review.content}"</p>
-              <div className="flex items-center gap-3 pt-4 border-t border-zinc-100">
+              <Quote className="w-10 h-10 text-brand mb-6 opacity-30" />
+              
+              <p className="text-zinc-700 text-lg md:text-xl font-medium leading-relaxed mb-10">
+                {review.content}
+              </p>
+
+              <div className="flex items-center gap-4 mt-auto">
                 <img 
                   loading="lazy"
                   src={review.image} 
                   alt={review.name} 
-                  className="w-10 h-10 rounded-full object-cover"
+                  className="w-12 h-12 rounded-full object-cover"
                   referrerPolicy="no-referrer"
                 />
-                <div>
-                  <div className="font-bold text-zinc-900 text-sm">{review.name}</div>
-                  <div className="text-xs text-zinc-400 font-medium">{review.role}</div>
+                <div className="font-bold text-zinc-900 text-base">
+                  {review.name}
                 </div>
               </div>
             </motion.div>

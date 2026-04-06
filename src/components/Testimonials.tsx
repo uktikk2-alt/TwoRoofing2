@@ -26,7 +26,7 @@ export const Testimonials = () => {
   const googleReviewsUrl = "https://google.com/maps/place/222+Roofing+%26+Remodeling/@42.7462121,-85.9093664,8z/data=!4m7!3m6!1s0x882521e293ccf8ff:0xe0487b0636cb743f!8m2!3d42.64199!4d-82.8913337!15sChZ0d28yMiByb29maW5nIG1pY2hpZ2FuWhgiFnR3bzIyIHJvb2ZpbmcgbWljaGlnYW6SARJyb29maW5nX2NvbnRyYWN0b3KaASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVTlhkVGxJU2twUkVBReABAPoBBAgAEEs!16s%2Fg%2F11l3q55w_v?entry=tts&g_ep=EgoyMDI2MDQwMS4wIPu8ASoASAFQAw%3D%3D&skid=31b9f812-9fcb-4837-9d1d-e8c58373eae6";
 
   return (
-    <section id="reviews" className="py-20 md:py-28 bg-zinc-50/50">
+    <section id="reviews" className="py-20 md:py-28 bg-gradient-to-b from-white via-brand/[0.02] to-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Clean centered header */}
         <div className="text-center max-w-3xl mx-auto mb-14 md:mb-20">
@@ -45,7 +45,7 @@ export const Testimonials = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl md:text-5xl lg:text-6xl font-black text-zinc-900 mb-5 tracking-tight"
+            className="text-4xl md:text-6xl lg:text-7xl font-black text-zinc-900 mb-5 tracking-tight"
           >
             What Our Clients Say
           </motion.h2>

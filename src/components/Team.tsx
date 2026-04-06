@@ -27,7 +27,7 @@ export const Team = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl md:text-5xl lg:text-6xl font-black mb-5 tracking-tight"
+            className="text-4xl md:text-6xl lg:text-7xl font-black mb-5 tracking-tight"
           >
             Meet the Owners
           </motion.h2>

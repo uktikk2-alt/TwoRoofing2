@@ -51,7 +51,7 @@ export const Services = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => 
   const displayedServices = showAll ? services : services.slice(0, 3);
 
   return (
-    <section id="services" className="py-20 md:py-28 bg-zinc-50/50">
+    <section id="services" className="py-20 md:py-28 bg-gradient-to-b from-white via-brand/[0.02] to-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Clean centered header */}
         <div className="text-center max-w-3xl mx-auto mb-14 md:mb-20">
@@ -70,7 +70,7 @@ export const Services = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => 
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl md:text-5xl lg:text-6xl font-black text-zinc-900 leading-tight mb-5 tracking-tight"
+            className="text-4xl md:text-6xl lg:text-7xl font-black text-zinc-900 leading-tight mb-5 tracking-tight"
           >
             Professional Roofing Solutions
           </motion.h2>

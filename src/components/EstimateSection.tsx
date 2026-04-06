@@ -3,7 +3,7 @@ import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
 export const EstimateSection = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => {
   return (
-    <section id="estimate" className="py-20 md:py-28 bg-zinc-50/50">
+    <section id="estimate" className="py-20 md:py-28 bg-gradient-to-b from-white via-brand/[0.02] to-white">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -21,7 +21,7 @@ export const EstimateSection = ({ onOpenEstimate }: { onOpenEstimate: () => void
               <span className="text-xs font-semibold text-zinc-400">Get Started</span>
             </div>
 
-            <h3 className="text-3xl md:text-5xl lg:text-6xl font-black mb-5 tracking-tight text-white leading-[1.1]">
+            <h3 className="text-4xl md:text-6xl lg:text-7xl font-black mb-5 tracking-tight text-white leading-[1.1]">
               Request Your <span className="text-brand">Free Estimate</span>
             </h3>
             <p className="text-zinc-400 text-base md:text-lg leading-relaxed mb-10 max-w-lg">

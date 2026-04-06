@@ -8,7 +8,7 @@ export const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 md:py-28 bg-white">
+    <section id="projects" className="py-20 md:py-28 bg-gradient-to-b from-white via-brand/[0.02] to-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Clean centered header */}
         <div className="text-center max-w-3xl mx-auto mb-14 md:mb-20">
@@ -27,7 +27,7 @@ export const Projects = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-3xl md:text-5xl lg:text-6xl font-black text-zinc-900 tracking-tight"
+            className="text-4xl md:text-6xl lg:text-7xl font-black text-zinc-900 tracking-tight"
           >
             Recent Projects
           </motion.h2>

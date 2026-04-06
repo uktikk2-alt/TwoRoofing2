@@ -3,7 +3,7 @@ import { CheckCircle2 } from 'lucide-react';
 
 export const About = () => {
   return (
-    <section id="about" className="py-20 md:py-28 bg-white">
+    <section id="about" className="py-20 md:py-28 bg-gradient-to-b from-white via-brand/[0.02] to-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-center">
           <motion.div 
@@ -50,12 +50,14 @@ export const About = () => {
             transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
             className="space-y-8 order-1 lg:order-2"
           >
-            <div>
-              <div className="inline-flex items-center gap-2 bg-zinc-50 border border-zinc-200 rounded-full px-4 py-1.5 mb-6">
-                <span className="w-1.5 h-1.5 rounded-full bg-brand" />
-                <span className="text-xs font-semibold text-zinc-600">Why Choose TWO22</span>
+            <div className="text-center lg:text-left">
+              <div className="flex justify-center lg:justify-start">
+                <div className="inline-flex items-center gap-2 bg-zinc-50 border border-zinc-200 rounded-full px-4 py-1.5 mb-6">
+                  <span className="w-1.5 h-1.5 rounded-full bg-brand" />
+                  <span className="text-xs font-semibold text-zinc-600">Why Choose TWO22</span>
+                </div>
               </div>
-              <h2 className="text-3xl md:text-5xl font-black text-zinc-900 leading-[1.1] tracking-tight mb-6">
+              <h2 className="text-4xl md:text-6xl font-black text-zinc-900 leading-[1.1] tracking-tight mb-6">
                 Roofing You Can Trust in Macomb County
               </h2>
             </div>

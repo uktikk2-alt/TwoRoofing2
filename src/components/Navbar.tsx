@@ -149,10 +149,10 @@ export const Navbar = ({ onOpenEstimate, isMobileMenuOpen, setIsMobileMenuOpen }
               </motion.button>
             </div>
             
-            <div className="flex-1 flex flex-col justify-center items-center px-6 pb-24 relative z-10">
-              <div className="flex flex-col w-full max-w-lg items-center">
+            <div className="flex-1 flex flex-col justify-center items-center relative z-10 -mt-10">
+              <div className="flex flex-col w-full items-center">
                 {mobileNavLinks.map((link, i) => (
-                  <div key={link.name} className="relative py-8 border-b border-white/5 overflow-hidden group">
+                  <div key={link.name} className="relative py-10 w-full flex justify-center group overflow-hidden">
                     <motion.a 
                       initial={{ y: "150%", opacity: 0 }}
                       animate={{ y: "0%", opacity: 1 }}
@@ -172,12 +172,10 @@ export const Navbar = ({ onOpenEstimate, isMobileMenuOpen, setIsMobileMenuOpen }
                         {link.name}
                       </span>
                     </motion.a>
-                    <motion.div 
-                      initial={{ scaleX: 0 }}
-                      animate={{ scaleX: 1 }}
-                      transition={{ delay: 0.6 + (i * 0.1), duration: 1 }}
-                      className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-brand/50 to-transparent origin-left"
-                    />
+
+                    {/* Cinematic Gradient Line */}
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-4/5 h-[1px] bg-gradient-to-r from-transparent via-brand/20 to-transparent opacity-50" />
+                    <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-2/3 h-[1.5px] bg-gradient-to-r from-brand-dark/20 via-brand/40 to-brand-dark/20 blur-[0.5px]" />
                   </div>
                 ))}
               </div>

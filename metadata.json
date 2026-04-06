@@ -1,0 +1,7 @@
+{
+  "name": "Apex Roofing - Premium Roofing Solutions",
+  "description": "A high-end, conversion-focused roofing services website featuring cinematic animations and an AI-powered roofing assistant.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

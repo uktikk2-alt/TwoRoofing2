@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { MessageSquare, X, Send, Bot, User, Loader2, Calculator, ShieldCheck, Calendar } from 'lucide-react';
+import { MessageSquare, X, Send, Bot, User, Loader2, Minus, MoreHorizontal, Smile, Paperclip, ChevronRight } from 'lucide-react';
 import { GoogleGenAI } from '@google/genai';
+import { cn } from '../lib/utils';
 
 // Safely handle API key. If missing, the agent will show an error message instead of crashing.
 const getApiKey = () => {
@@ -17,12 +18,19 @@ const ai = new GoogleGenAI({ apiKey: getApiKey() });
 interface Message {
   role: 'user' | 'assistant';
   content: string;
+  type?: 'text' | 'options' | 'pills';
+  options?: string[];
 }
 
 export default function RoofingAIAgent() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
-    { role: 'assistant', content: 'Hello! I am your Two22 Roofing assistant. How can I help you today? I can provide estimate guidance, answer FAQs about Michigan roofing, or help you book an inspection.' }
+    { 
+      role: 'assistant', 
+      content: 'Hi There, \nHow can I help you today?',
+      type: 'pills',
+      options: ['New Roof', 'Roof Repair', 'Inspection', 'Gutter/Siding']
+    }
   ]);
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -34,12 +42,12 @@ export default function RoofingAIAgent() {
     }
   }, [messages]);
 
-  const handleSend = async () => {
-    if (!input.trim() || isLoading) return;
+  const handleSend = async (customText?: string) => {
+    const textToSend = customText || input.trim();
+    if (!textToSend || isLoading) return;
 
-    const userMessage = input.trim();
     setInput('');
-    setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
+    setMessages(prev => [...prev, { role: 'user', content: textToSend }]);
     setIsLoading(true);
 
     try {
@@ -49,53 +57,23 @@ export default function RoofingAIAgent() {
 
       const response = await ai.models.generateContent({
         model: 'gemini-3-flash-preview',
-        contents: [...messages, { role: 'user', content: userMessage }].map(m => ({
+        contents: [...messages, { role: 'user', content: textToSend }].map(m => ({
           role: m.role === 'assistant' ? 'model' : 'user',
           parts: [{ text: m.content }]
         })),
         config: {
-          systemInstruction: `You are the official TWO22ROOFING (Two22 Roofing) virtual assistant for customers in/around Macomb, Michigan.
-
-KNOWLEDGE BASE:
-- Company: TWO22ROOFING
-- Location: Macomb, Michigan
-- Owners: Wendell and Rhonda
-- History: Family-owned business serving the community since 1996.
-- Mission: To deliver top-quality roofing solutions that protect homes and businesses in Macomb, Michigan, while ensuring exceptional service and reliability.
-- Services: New Roof Installation, Advanced Roof Inspections, Efficient Roof Repair Solutions, Comprehensive Roof Maintenance, Home Improvement (repairs/installations), Siding Installation, Gutters/Guards Installation, and Attic Insulation.
-- Values: Integrity, Quality, Customer Focus, Innovation, Community Commitment.
-
-RULES:
-- Only answer exactly what the user is asking. 
-- Do not add extra information, services, phone numbers, or details unless necessary or requested.
-- If the user sends only a greeting (e.g., "hi", "hello", "hey"), respond ONLY with a short greeting and a simple offer to help. 
-  Example: "Hi, how can I help you today?"
-- Do not mention services, phone numbers, estimates, or emergency help unless the user specifically asks about them.
-- Keep responses short, natural, and conversational.
-- Expand only if the user asks for more details.
-
-HARD RULES (ACCURACY / TRUST):
-- Only state facts that appear in the Knowledge Base. If something is not in the KB, say: “I don’t have that detail available here, but I can help you get it—please call or request a quote.”
-- Never invent promotions, prices, coupons, addresses, or timelines.
-- If the user reports an active leak or urgent damage:
-  1) Advise they contact TWO22ROOFING immediately by phone.
-  2) Provide owner numbers: Wendell (Owner): (586) 265-6607 and Rhonda (Owner): (586) 307-2872.
-- Don’t give dangerous DIY instructions. Favor safety and professional inspection.
-
-STYLE / BRAND VOICE:
-- Friendly, straightforward, “small business owner” vibe.
-- Keep responses concise (2-6 lines) and easy to scan.
-- Use short paragraphs and bullet points for lists.
-- Never give cluttered “wall of text” responses.
-
-CONTACT (ONLY IF ASKED OR URGENT):
-- Wendell (Owner): (586) 265-6607
-- Rhonda (Owner): (586) 307-2872`,
+          systemInstruction: `You are the official TWO22ROOFING assistant. 
+          Respond to user queries about roofing in Macomb, Michigan.
+          - Offer: New Roof Installation, Repairs, Inspections, Maintenance, Siding, Gutters, Attic Insulation.
+          - Style: Professional, friendly, helpful.
+          - Owners: Wendell and Rhonda.
+          - Phone: (586) 265-6607 (Wendell), (586) 307-2872 (Rhonda).
+          - Be extremely concise.`,
         }
       });
 
       const aiResponse = response.text || "I'm sorry, I couldn't process that. Please call us directly at (586) 265-6607.";
-      setMessages(prev => [...prev, { role: 'assistant', content: aiResponse }]);
+      setMessages(prev => [...prev, { role: 'assistant', content: aiResponse, type: 'text' }]);
     } catch (error) {
       console.error('AI Error:', error);
       const errorMsg = !getApiKey() 
@@ -109,137 +87,159 @@ CONTACT (ONLY IF ASKED OR URGENT):
 
   return (
     <>
-      {/* Floating Button */}
       <motion.button
         initial={{ scale: 0, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
         onClick={() => setIsOpen(true)}
-        className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-50 bg-brand text-white p-3 md:p-4 rounded-full shadow-2xl shadow-brand/20 flex items-center justify-center group"
+        className="fixed bottom-4 right-4 md:bottom-8 md:right-8 z-50 bg-brand text-white p-4 rounded-full shadow-2xl shadow-brand/20 flex items-center justify-center group overflow-hidden"
       >
-        <MessageSquare className="w-5 h-5 md:w-6 md:h-6" />
-        <span className="hidden md:block max-w-0 overflow-hidden group-hover:max-w-xs group-hover:ml-2 transition-all duration-300 whitespace-nowrap font-medium">
-          Chat with AI
-        </span>
+        <MessageSquare className="w-6 h-6 md:w-7 md:h-7" />
+        <motion.div 
+            animate={{ x: [0, -10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full border-2 border-white"
+        />
       </motion.button>
 
-      {/* Chat Window */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            initial={{ opacity: 0, y: 100, scale: 0.8 }}
+            initial={{ opacity: 0, y: 50, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 100, scale: 0.8 }}
-            className="fixed bottom-0 right-0 md:bottom-24 md:right-6 z-50 w-full md:w-[400px] h-full md:h-[min(600px,80vh)] bg-white rounded-none md:rounded-3xl shadow-2xl border-none md:border md:border-zinc-100 flex flex-col overflow-hidden"
+            exit={{ opacity: 0, y: 50, scale: 0.9 }}
+            className="fixed bottom-0 right-0 md:bottom-28 md:right-8 z-50 w-full md:w-[420px] h-full md:h-[min(650px,85vh)] bg-white rounded-none md:rounded-[2.5rem] shadow-[0_30px_90px_rgba(0,0,0,0.15)] flex flex-col overflow-hidden border border-zinc-100"
           >
-            {/* Header */}
-            <div className="bg-zinc-900 p-4 md:p-6 text-white flex items-center justify-between">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 md:w-10 md:h-10 bg-brand rounded-lg md:rounded-xl flex items-center justify-center">
-                  <Bot className="w-5 h-5 md:w-6 md:h-6" />
+            {/* Header: Gradient + Profile */}
+            <div className="bg-gradient-to-br from-brand via-brand-accent to-[#4f46e5] px-6 py-8 text-white relative">
+              <div className="flex items-center gap-4">
+                <div className="relative">
+                  <div className="w-16 h-16 bg-white rounded-3xl flex items-center justify-center shadow-lg transform -rotate-3">
+                    <Bot className="w-9 h-9 text-brand" />
+                  </div>
+                  <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-green-500 rounded-full border-4 border-white animate-pulse" />
                 </div>
                 <div>
-                  <h3 className="font-bold text-sm md:text-base">Two22 AI Assistant</h3>
-                  <div className="flex items-center gap-1.5 text-[10px] md:text-xs text-zinc-400">
-                    <span className="w-1.5 h-1.5 md:w-2 md:h-2 bg-green-500 rounded-full animate-pulse" />
-                    Online & Ready
-                  </div>
+                  <h3 className="text-xl font-bold tracking-tight">Two22 Assistant</h3>
+                  <p className="text-white/70 text-sm font-medium">You can ask me anything</p>
                 </div>
               </div>
-              <button onClick={() => setIsOpen(false)} className="p-2 hover:bg-zinc-800 rounded-lg transition-colors">
-                <X className="w-5 h-5" />
-              </button>
+              <div className="absolute top-4 right-4 flex items-center gap-1">
+                <button className="p-2 hover:bg-white/10 rounded-full transition-colors"><MoreHorizontal className="w-5 h-5" /></button>
+                <button className="p-2 hover:bg-white/10 rounded-full transition-colors" onClick={() => setIsOpen(false)}><Minus className="w-5 h-5" /></button>
+              </div>
             </div>
 
-            {/* Messages */}
-            <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 md:p-6 space-y-4 bg-zinc-50/50">
+            {/* Messages Area */}
+            <div ref={scrollRef} className="flex-1 overflow-y-auto p-6 space-y-6 bg-zinc-50/30">
               {messages.map((m, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, x: m.role === 'user' ? 20 : -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  className={cn(
-                    "flex gap-2 md:gap-3 max-w-[90%] md:max-w-[85%]",
-                    m.role === 'user' ? "ml-auto flex-row-reverse" : ""
+                <div key={i} className="flex flex-col gap-4">
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    className={cn(
+                      "flex gap-3 max-w-[85%]",
+                      m.role === 'user' ? "ml-auto flex-row-reverse" : ""
+                    )}
+                  >
+                    <div className={cn(
+                      "w-8 h-8 rounded-xl flex items-center justify-center flex-shrink-0 shadow-sm",
+                      m.role === 'user' ? "bg-white border border-zinc-100 p-1" : "bg-gradient-to-br from-brand to-brand-accent text-white"
+                    )}>
+                      {m.role === 'user' ? <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=1974&auto=format&fit=crop" className="w-full h-full rounded-lg object-cover" /> : <Bot className="w-5 h-5" />}
+                    </div>
+                    
+                    <div className={cn(
+                      "p-4 rounded-2xl text-sm leading-relaxed shadow-sm",
+                      m.role === 'user' 
+                        ? "bg-gradient-to-r from-brand to-[#4f46e5] text-white rounded-tr-none" 
+                        : "bg-white text-zinc-800 border border-zinc-100 rounded-tl-none"
+                    )}>
+                      <div className="whitespace-pre-line">{m.content}</div>
+                    </div>
+                  </motion.div>
+
+                  {/* Options List (like the refernce image) */}
+                  {m.type === 'pills' && m.options && (
+                    <div className="flex flex-wrap gap-2 ml-11">
+                      {m.options.map((opt) => (
+                        <button
+                          key={opt}
+                          onClick={() => handleSend(opt)}
+                          className="px-4 py-2 bg-white border border-brand/20 hover:border-brand hover:bg-brand/[0.02] text-brand text-xs font-bold rounded-full transition-all duration-300 shadow-sm shadow-brand/5"
+                        >
+                          {opt}
+                        </button>
+                      ))}
+                    </div>
                   )}
-                >
-                  <div className={cn(
-                    "w-7 h-7 md:w-8 md:h-8 rounded-lg flex items-center justify-center flex-shrink-0",
-                    m.role === 'user' ? "bg-zinc-200" : "bg-brand/10 text-brand"
-                  )}>
-                    {m.role === 'user' ? <User className="w-3.5 h-3.5 md:w-4 md:h-4" /> : <Bot className="w-3.5 h-3.5 md:w-4 md:h-4" />}
-                  </div>
-                  <div className={cn(
-                    "p-2.5 md:p-3 rounded-2xl text-xs md:text-sm leading-relaxed",
-                    m.role === 'user' 
-                      ? "bg-brand text-white rounded-tr-none" 
-                      : "bg-white text-zinc-800 shadow-sm border border-zinc-100 rounded-tl-none"
-                  )}>
-                    {m.content}
-                  </div>
-                </motion.div>
+
+                  {/* Service Selection List (like the reference image) */}
+                  {m.role === 'assistant' && i === 0 && (
+                    <div className="ml-11 mt-4 bg-white rounded-2xl border border-zinc-100 shadow-xl overflow-hidden divide-y divide-zinc-50 max-w-[90%]">
+                      {[
+                        { title: 'New Roof Installation', icon: '🏠' },
+                        { title: 'Emergency Repair', icon: '🛠️' },
+                        { title: 'Inspection Booking', icon: '📝' }
+                      ].map((item) => (
+                        <button
+                          key={item.title}
+                          onClick={() => handleSend(item.title)}
+                          className="w-full px-5 py-4 flex items-center justify-between hover:bg-zinc-50 transition-colors group"
+                        >
+                          <div className="flex items-center gap-3">
+                            <span className="text-xl">{item.icon}</span>
+                            <span className="text-sm font-bold text-zinc-900 group-hover:text-brand transition-colors">{item.title}</span>
+                          </div>
+                          <ChevronRight className="w-4 h-4 text-zinc-300 group-hover:text-brand group-hover:translate-x-0.5 transition-all" />
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
               ))}
               {isLoading && (
-                <div className="flex gap-2 md:gap-3 max-w-[85%]">
-                  <div className="w-7 h-7 md:w-8 md:h-8 rounded-lg bg-brand/10 text-brand flex items-center justify-center">
-                    <Loader2 className="w-3.5 h-3.5 md:w-4 md:h-4 animate-spin" />
+                <div className="flex gap-3 max-w-[85%]">
+                  <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-brand to-brand-accent text-white flex items-center justify-center">
+                    <Loader2 className="w-4 h-4 animate-spin" />
                   </div>
-                  <div className="bg-white p-2.5 md:p-3 rounded-2xl rounded-tl-none shadow-sm border border-zinc-100">
-                    <div className="flex gap-1">
-                      <span className="w-1 h-1 md:w-1.5 md:h-1.5 bg-zinc-300 rounded-full animate-bounce" />
-                      <span className="w-1 h-1 md:w-1.5 md:h-1.5 bg-zinc-300 rounded-full animate-bounce [animation-delay:0.2s]" />
-                      <span className="w-1 h-1 md:w-1.5 md:h-1.5 bg-zinc-300 rounded-full animate-bounce [animation-delay:0.4s]" />
-                    </div>
+                  <div className="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm border border-zinc-100">
+                    <span className="flex gap-1.5">
+                      <span className="w-1.5 h-1.5 bg-brand/30 rounded-full animate-bounce" />
+                      <span className="w-1.5 h-1.5 bg-brand/30 rounded-full animate-bounce [animation-delay:0.2s]" />
+                      <span className="w-1.5 h-1.5 bg-brand/30 rounded-full animate-bounce [animation-delay:0.4s]" />
+                    </span>
                   </div>
                 </div>
               )}
             </div>
 
-            {/* Quick Actions */}
-            <div className="px-4 md:px-6 py-2 md:py-3 flex gap-2 overflow-x-auto no-scrollbar border-t border-zinc-100">
-              <button 
-                onClick={() => setInput("How much does a new roof cost?")}
-                className="whitespace-nowrap px-2.5 py-1 md:px-3 md:py-1.5 bg-white border border-zinc-200 rounded-full text-[10px] md:text-xs font-medium hover:border-brand hover:text-brand transition-all flex items-center gap-1 md:gap-1.5"
-              >
-                <Calculator className="w-2.5 h-2.5 md:w-3 md:h-3" /> Estimate Guide
-              </button>
-              <button 
-                onClick={() => setInput("Book a free inspection")}
-                className="whitespace-nowrap px-2.5 py-1 md:px-3 md:py-1.5 bg-white border border-zinc-200 rounded-full text-[10px] md:text-xs font-medium hover:border-brand hover:text-brand transition-all flex items-center gap-1 md:gap-1.5"
-              >
-                <Calendar className="w-2.5 h-2.5 md:w-3 md:h-3" /> Book Inspection
-              </button>
-              <button 
-                onClick={() => setInput("What warranties do you offer?")}
-                className="whitespace-nowrap px-2.5 py-1 md:px-3 md:py-1.5 bg-white border border-zinc-200 rounded-full text-[10px] md:text-xs font-medium hover:border-brand hover:text-brand transition-all flex items-center gap-1 md:gap-1.5"
-              >
-                <ShieldCheck className="w-2.5 h-2.5 md:w-3 md:h-3" /> Warranties
-              </button>
-            </div>
-
-            {/* Input */}
-            <div className="p-4 md:p-6 pt-0">
-              <div className="relative flex items-center">
-                <input
-                  type="text"
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  onKeyDown={(e) => e.key === 'Enter' && handleSend()}
-                  placeholder="Type your message..."
-                  className="w-full pl-3 md:pl-4 pr-10 md:pr-12 py-2.5 md:py-3 bg-zinc-100 border-none rounded-xl md:rounded-2xl text-xs md:text-sm focus:ring-2 focus:ring-brand/20 transition-all outline-none"
-                />
+            {/* Input: Redesigned like reference */}
+            <div className="p-6 bg-white border-t border-zinc-100">
+              <div className="flex items-center gap-3">
+                <div className="relative flex-1 group">
+                  <input
+                    type="text"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyDown={(e) => e.key === 'Enter' && handleSend()}
+                    placeholder="Type and press [enter]"
+                    className="w-full pl-5 pr-20 py-4 bg-zinc-50 border border-transparent rounded-2xl text-sm focus:bg-white focus:border-brand/20 transition-all outline-none font-medium placeholder:text-zinc-400"
+                  />
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 flex items-center gap-2 text-zinc-400 pr-1 border-l border-zinc-200 ml-2 pl-3">
+                    <button className="hover:text-brand transition-colors"><Smile className="w-5 h-5" /></button>
+                    <button className="hover:text-brand transition-colors md:block hidden"><Paperclip className="w-5 h-5" /></button>
+                  </div>
+                </div>
                 <button
-                  onClick={handleSend}
+                  onClick={() => handleSend()}
                   disabled={!input.trim() || isLoading}
-                  className="absolute right-1.5 md:right-2 p-1.5 md:p-2 bg-brand text-white rounded-lg md:rounded-xl disabled:opacity-50 disabled:cursor-not-allowed hover:bg-brand-dark transition-colors"
+                  className="p-3.5 bg-zinc-100 hover:bg-brand text-zinc-400 hover:text-white rounded-full transition-all duration-300 disabled:opacity-50 shadow-sm"
                 >
-                  <Send className="w-3.5 h-3.5 md:w-4 md:h-4" />
+                  <Send className="w-6 h-6" />
                 </button>
               </div>
-              <p className="text-[9px] md:text-[10px] text-center text-zinc-400 mt-2 md:mt-3">
-                Powered by Two22 AI • Professional Roofing Guidance
-              </p>
             </div>
           </motion.div>
         )}
@@ -247,5 +247,3 @@ CONTACT (ONLY IF ASKED OR URGENT):
     </>
   );
 }
-
-import { cn } from '../lib/utils';

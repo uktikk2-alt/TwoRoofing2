@@ -165,7 +165,7 @@ export const Navbar = ({ onOpenEstimate, isMobileMenuOpen, setIsMobileMenuOpen }
                       onClick={() => setIsMobileMenuOpen(false)}
                       className="flex items-center gap-4 group"
                     >
-                      <span className="text-brand-light font-display font-black text-xs mb-1.5 opacity-80 group-hover:opacity-100 transition-opacity">
+                      <span className="absolute right-[calc(100%+1.25rem)] bottom-1 md:bottom-2 text-brand-light font-display font-black text-xs md:text-sm opacity-80 group-hover:opacity-100 transition-opacity">
                         {(i + 1).toString().padStart(2, '0')}
                       </span>
                       <span className="text-3xl sm:text-5xl font-black text-white group-hover:text-brand transition-colors duration-500 tracking-tighter">

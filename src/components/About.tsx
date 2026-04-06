@@ -3,13 +3,13 @@ import { CheckCircle2 } from 'lucide-react';
 
 export const About = () => {
   return (
-    <section id="about" className="py-20 md:py-28 bg-gradient-to-b from-white via-brand/[0.02] to-white">
+    <section id="about" className="py-16 md:py-24 bg-gradient-to-b from-white via-brand/[0.02] to-white">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-center">
           <motion.div 
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -15 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
             className="relative order-2 lg:order-1"
           >
@@ -25,7 +25,7 @@ export const About = () => {
               <motion.div 
                 initial={{ x: "0%" }}
                 whileInView={{ x: "100%" }}
-                viewport={{ once: true }}
+                viewport={{ once: true, margin: "-20px" }}
                 transition={{ duration: 0.9, ease: [0.25, 1, 0.5, 1], delay: 0.2 }}
                 className="absolute inset-0 bg-brand z-20"
               />
@@ -34,7 +34,7 @@ export const About = () => {
             <motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-20px" }}
               transition={{ delay: 0.5, duration: 0.6 }}
               className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 z-20 bg-zinc-900 text-white px-5 md:px-8 py-4 md:py-6 rounded-2xl shadow-xl"
             >
@@ -44,9 +44,9 @@ export const About = () => {
           </motion.div>
 
           <motion.div 
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 15 }}
             whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
+            viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
             className="space-y-8 order-1 lg:order-2"
           >
@@ -76,7 +76,7 @@ export const About = () => {
                   key={item}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: true, margin: "-20px" }}
                   transition={{ duration: 0.5, delay: 0.2 + (i * 0.08) }}
                   className="flex items-center gap-3"
                 >

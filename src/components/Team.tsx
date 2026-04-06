@@ -8,14 +8,14 @@ export const Team = () => {
   ];
 
   return (
-    <section id="team" className="py-20 md:py-28 bg-zinc-900 text-white">
+    <section id="team" className="py-16 md:py-24 bg-zinc-900 text-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Clean centered header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 md:mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-14 md:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 mb-6"
           >
@@ -23,9 +23,9 @@ export const Team = () => {
             <span className="text-xs font-semibold text-zinc-400">The Experts</span>
           </motion.div>
           <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-6xl lg:text-7xl font-black mb-5 tracking-tight"
           >
@@ -34,7 +34,7 @@ export const Team = () => {
           <motion.p 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-20px" }}
             transition={{ delay: 0.2, duration: 0.5 }}
             className="text-zinc-400 text-base md:text-lg leading-relaxed max-w-xl mx-auto"
           >
@@ -46,9 +46,9 @@ export const Team = () => {
           {team.map((member, i) => (
             <motion.div
               key={member.name}
-              initial={{ opacity: 0, y: 25 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
+              viewport={{ once: true, margin: "-20px" }}
               transition={{ delay: i * 0.12, duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
               className="group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-white/20 transition-all duration-500"
             >

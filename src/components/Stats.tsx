@@ -10,15 +10,15 @@ export const Stats = () => {
   ];
 
   return (
-    <section className="py-20 md:py-24 bg-white relative z-20">
+    <section className="py-16 md:py-24 bg-white relative z-20">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
           {stats.map((stat, i) => (
             <motion.div
               key={stat.label}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
+              viewport={{ once: true, margin: "-20px" }}
               transition={{ delay: i * 0.1, duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
               className="text-center"
             >

@@ -51,14 +51,14 @@ export const Services = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => 
   const displayedServices = showAll ? services : services.slice(0, 3);
 
   return (
-    <section id="services" className="py-20 md:py-28 bg-gradient-to-b from-white via-brand/[0.02] to-white">
+    <section id="services" className="py-16 md:py-24 bg-gradient-to-b from-white via-brand/[0.02] to-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Clean centered header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 md:mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-14 md:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2 bg-white border border-zinc-200 rounded-full px-4 py-1.5 mb-6"
           >
@@ -66,18 +66,18 @@ export const Services = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => 
             <span className="text-xs font-semibold text-zinc-600">Our Expertise</span>
           </motion.div>
           <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-6xl lg:text-7xl font-black text-zinc-900 leading-tight mb-5 tracking-tight"
           >
             Professional Roofing Solutions
           </motion.h2>
           <motion.p
-            initial={{ opacity: 0, y: 15 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-zinc-500 text-base md:text-lg leading-relaxed max-w-xl mx-auto"
           >
@@ -91,10 +91,10 @@ export const Services = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => 
               {displayedServices.map((service, i) => (
                 <motion.div
                   key={service.title}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
-                  viewport={{ once: true, margin: "-80px" }}
+                  viewport={{ once: true, margin: "-20px" }}
                   transition={{ 
                     delay: showAll && i >= 3 ? (i - 3) * 0.08 : i * 0.1, 
                     duration: 0.7, 
@@ -111,7 +111,7 @@ export const Services = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => 
                       referrerPolicy="no-referrer"
                     />
                   </div>
-                  <div className="p-6 md:p-8">
+                  <div className="p-6 md:p-8 flex flex-col items-center text-center">
                     <h3 className="text-lg md:text-xl font-bold text-zinc-900 mb-2.5 group-hover:text-brand transition-colors duration-300">{service.title}</h3>
                     <p className="text-zinc-500 mb-6 leading-relaxed text-sm">{service.description}</p>
                     <button 
@@ -133,9 +133,9 @@ export const Services = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => 
         </div>
 
         <motion.div 
-          initial={{ opacity: 0, y: 15 }}
+          initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, margin: "-20px" }}
           className="mt-8 text-center relative z-20"
         >
           <button

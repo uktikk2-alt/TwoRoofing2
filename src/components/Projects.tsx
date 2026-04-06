@@ -8,14 +8,14 @@ export const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 md:py-28 bg-gradient-to-b from-white via-brand/[0.02] to-white">
+    <section id="projects" className="py-16 md:py-24 bg-gradient-to-b from-white via-brand/[0.02] to-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Clean centered header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 md:mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-14 md:mb-16">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.5 }}
             className="inline-flex items-center gap-2 bg-zinc-50 border border-zinc-200 rounded-full px-4 py-1.5 mb-6"
           >
@@ -23,9 +23,9 @@ export const Projects = () => {
             <span className="text-xs font-semibold text-zinc-600">Our Work</span>
           </motion.div>
           <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-4xl md:text-6xl lg:text-7xl font-black text-zinc-900 tracking-tight"
           >
@@ -37,9 +37,9 @@ export const Projects = () => {
           {projects.map((project, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-80px" }}
+              viewport={{ once: true, margin: "-20px" }}
               transition={{ delay: i * 0.1, duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
               className="group relative aspect-[4/5] rounded-2xl overflow-hidden border border-zinc-200/80 hover:shadow-lg transition-all duration-500"
             >

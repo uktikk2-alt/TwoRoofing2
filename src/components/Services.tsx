@@ -51,78 +51,75 @@ export const Services = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => 
   const displayedServices = showAll ? services : services.slice(0, 3);
 
   return (
-    <section id="services" className="py-20 md:py-24 bg-zinc-50 overflow-hidden">
+    <section id="services" className="py-20 md:py-28 bg-zinc-50/50">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 items-end mb-14 md:mb-20 gap-8 md:gap-12">
-          <div className="max-w-2xl">
-            <motion.span 
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              className="text-brand font-black uppercase tracking-[0.3em] text-xs md:text-sm block mb-4"
-            >
-              Our Expertise
-            </motion.span>
-            <motion.h2 
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.8 }}
-              className="text-3xl md:text-6xl font-black text-zinc-900 leading-tight"
-            >
-              Professional Roofing <br className="hidden md:block" /> Solutions for Every Need
-            </motion.h2>
-          </div>
+        {/* Clean centered header */}
+        <div className="text-center max-w-3xl mx-auto mb-14 md:mb-20">
           <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 bg-white border border-zinc-200 rounded-full px-4 py-1.5 mb-6"
+          >
+            <span className="w-1.5 h-1.5 rounded-full bg-brand" />
+            <span className="text-xs font-semibold text-zinc-600">Our Expertise</span>
+          </motion.div>
+          <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="md:pb-2"
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-3xl md:text-5xl lg:text-6xl font-black text-zinc-900 leading-tight mb-5 tracking-tight"
           >
-            <p className="text-zinc-500 max-w-md text-lg leading-relaxed">
-              From routine maintenance to complete emergency replacements, our team delivers excellence in every shingle.
-            </p>
-          </motion.div>
+            Professional Roofing Solutions
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-zinc-500 text-base md:text-lg leading-relaxed max-w-xl mx-auto"
+          >
+            From routine maintenance to complete emergency replacements, our team delivers excellence in every shingle.
+          </motion.p>
         </div>
 
         <div className="relative">
-          <div className="grid md:grid-cols-3 gap-8 md:gap-12">
+          <div className="grid md:grid-cols-3 gap-5 md:gap-6">
             <AnimatePresence mode="popLayout">
               {displayedServices.map((service, i) => (
                 <motion.div
                   key={service.title}
-                  initial={{ opacity: 0, y: 40 }}
+                  initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0 }}
                   viewport={{ once: true, margin: "-80px" }}
                   transition={{ 
-                    delay: showAll && i >= 3 ? (i - 3) * 0.1 : i * 0.15, 
-                    duration: 0.9, 
+                    delay: showAll && i >= 3 ? (i - 3) * 0.08 : i * 0.1, 
+                    duration: 0.7, 
                     ease: [0.25, 1, 0.5, 1] 
                   }}
-                  className="group relative bg-white rounded-[2.5rem] overflow-hidden shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_20px_40px_rgba(121,31,120,0.1)] hover:-translate-y-2 transition-all duration-500 border border-zinc-100"
+                  className="group bg-white rounded-2xl overflow-hidden border border-zinc-200/80 hover:border-zinc-300 hover:shadow-lg hover:-translate-y-1 transition-all duration-500"
                 >
-                  <div className="h-64 md:h-80 overflow-hidden relative bg-zinc-100">
-                    <motion.img 
+                  <div className="h-56 md:h-64 overflow-hidden relative bg-zinc-100">
+                    <img 
                       src={service.image} 
                       alt={service.title} 
                       loading={i > 2 ? "lazy" : "eager"}
                       className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       referrerPolicy="no-referrer"
                     />
-                    <div className="absolute inset-0 bg-brand/0 group-hover:bg-brand/10 transition-colors duration-700 ease-out" />
                   </div>
-                  <div className="p-6 sm:p-8 md:p-12 pb-10 sm:pb-14 md:pb-16">
-                    <h3 className="text-xl md:text-3xl font-black text-zinc-900 mb-4 tracking-tight group-hover:text-brand transition-colors">{service.title}</h3>
-                    <p className="text-zinc-500 mb-8 leading-relaxed text-sm md:text-base">{service.description}</p>
+                  <div className="p-6 md:p-8">
+                    <h3 className="text-lg md:text-xl font-bold text-zinc-900 mb-2.5 group-hover:text-brand transition-colors duration-300">{service.title}</h3>
+                    <p className="text-zinc-500 mb-6 leading-relaxed text-sm">{service.description}</p>
                     <button 
                       onClick={onOpenEstimate}
-                      className="group/btn relative inline-flex items-center gap-2.5 bg-brand/10 hover:bg-brand text-brand hover:text-white px-6 py-3 rounded-full font-black text-sm transition-all duration-500 overflow-hidden"
+                      className="inline-flex items-center gap-2 bg-zinc-900 hover:bg-brand text-white text-sm font-semibold px-5 py-2.5 rounded-full transition-all duration-300 group/btn"
                     >
-                      <span className="relative z-10">Get an Estimate</span>
-                      <ArrowRight className="w-4 h-4 relative z-10 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                      <div className="absolute inset-0 bg-gradient-to-r from-brand via-brand-dark to-brand opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500" />
+                      Get an Estimate
+                      <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-0.5 transition-transform duration-300" />
                     </button>
                   </div>
                 </motion.div>
@@ -130,35 +127,29 @@ export const Services = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => 
             </AnimatePresence>
           </div>
 
-          {/* Folded Gradient Overlay - Subtle hint that doesn't cover content */}
           {!showAll && (
-            <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-zinc-50 via-zinc-50/20 to-transparent pointer-events-none z-10" />
+            <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-zinc-50/50 to-transparent pointer-events-none z-10" />
           )}
         </div>
 
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-2 text-center relative z-20"
+          className="mt-8 text-center relative z-20"
         >
-          <motion.button
+          <button
             onClick={() => setShowAll(!showAll)}
-            whileHover={{ scale: 1.02, y: -1 }}
-            whileTap={{ scale: 0.98 }}
-            className="group inline-flex items-center gap-2.5 px-5 py-2.5 bg-white border border-zinc-200 rounded-full shadow-md hover:shadow-lg hover:border-brand/30 transition-all duration-500 -translate-y-4"
+            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-zinc-200 rounded-full text-zinc-700 font-semibold text-sm hover:border-zinc-400 hover:shadow-sm transition-all duration-300"
           >
-            <span className="text-zinc-900 font-bold text-xs md:text-sm tracking-tight">
-              {showAll ? 'Show Less Services' : 'Show More Services'}
-            </span>
+            {showAll ? 'Show Less' : 'Show All Services'}
             <motion.div
               animate={{ rotate: showAll ? 180 : 0 }}
               transition={{ type: "spring", stiffness: 200, damping: 20 }}
-              className="w-6 h-6 bg-brand/5 rounded-full flex items-center justify-center text-brand group-hover:bg-brand group-hover:text-white transition-all duration-500"
             >
-              <ChevronDown className="w-3.5 h-3.5" />
+              <ChevronDown className="w-4 h-4" />
             </motion.div>
-          </motion.button>
+          </button>
         </motion.div>
       </div>
     </section>

@@ -8,69 +8,69 @@ export const Team = () => {
   ];
 
   return (
-    <section id="team" className="py-20 md:py-24 bg-zinc-900 text-white overflow-hidden">
+    <section id="team" className="py-20 md:py-28 bg-zinc-900 text-white">
       <div className="max-w-7xl mx-auto px-6">
+        {/* Clean centered header */}
         <div className="text-center max-w-3xl mx-auto mb-14 md:mb-20">
-          <motion.span 
+          <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.6, ease: [0.25, 1, 0.5, 1] }}
-            className="text-brand font-black uppercase tracking-[0.3em] text-xs md:text-sm block mb-4"
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 mb-6"
           >
-            The Experts
-          </motion.span>
+            <span className="w-1.5 h-1.5 rounded-full bg-brand" />
+            <span className="text-xs font-semibold text-zinc-400">The Experts</span>
+          </motion.div>
           <motion.h2 
-            initial={{ opacity: 0, y: 25 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-            className="text-3xl md:text-6xl font-black mb-6"
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="text-3xl md:text-5xl lg:text-6xl font-black mb-5 tracking-tight"
           >
-            Skilled Roofing Professionals
+            Meet the Owners
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-zinc-400 text-lg leading-relaxed"
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="text-zinc-400 text-base md:text-lg leading-relaxed max-w-xl mx-auto"
           >
             Meet the dedicated owners who bring decades of combined experience to every project we undertake.
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 md:gap-16 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 md:gap-8 max-w-4xl mx-auto">
           {team.map((member, i) => (
             <motion.div
               key={member.name}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-80px" }}
-              transition={{ delay: i * 0.15, duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-              className="group"
+              transition={{ delay: i * 0.12, duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
+              className="group bg-white/5 border border-white/10 rounded-2xl overflow-hidden hover:border-white/20 transition-all duration-500"
             >
-              <div className="relative aspect-[4/5] rounded-[2.5rem] md:rounded-[3.5rem] overflow-hidden mb-8 md:mb-10 bg-zinc-800">
+              <div className="relative aspect-[4/5] overflow-hidden bg-zinc-800">
                 <img 
                   loading="lazy"
                   src={member.image} 
                   alt={member.name} 
-                  className="w-full h-full object-cover grayscale md:grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
                   referrerPolicy="no-referrer"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-80 group-hover:opacity-40 transition-opacity duration-500" />
-                <div className="absolute bottom-6 md:bottom-10 left-6 md:left-10 right-6 transform group-hover:-translate-y-1 transition-transform duration-500">
-                  <a href={`tel:${member.phone.replace(/[^0-9]/g, '')}`} className="flex items-center gap-3 mb-2 group/phone">
-                    <div className="w-10 h-10 md:w-12 md:h-12 bg-brand rounded-xl md:rounded-2xl flex items-center justify-center text-white shadow-xl shadow-brand/20 group-hover/phone:bg-brand-dark transition-colors duration-300">
-                      <Phone className="w-5 h-5 md:w-6 md:h-6" />
-                    </div>
-                    <span className="font-bold text-base md:text-xl text-white group-hover/phone:text-brand transition-colors duration-300">{member.phone}</span>
+                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent" />
+                <div className="absolute bottom-6 left-6 right-6">
+                  <a href={`tel:${member.phone.replace(/[^0-9]/g, '')}`} className="inline-flex items-center gap-2.5 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full px-4 py-2.5 hover:bg-brand/80 transition-all duration-300 group/phone">
+                    <Phone className="w-4 h-4" />
+                    <span className="font-semibold text-sm">{member.phone}</span>
                   </a>
                 </div>
               </div>
-              <div className="px-2">
-                <h3 className="text-2xl md:text-3xl font-black mb-2 tracking-tight group-hover:text-brand transition-colors duration-300">{member.name}</h3>
-                <p className="text-brand font-bold uppercase tracking-[0.2em] text-xs md:text-sm">{member.role}</p>
+              <div className="p-6">
+                <h3 className="text-xl font-bold mb-1 tracking-tight">{member.name}</h3>
+                <p className="text-sm font-semibold text-zinc-400 uppercase tracking-wider">{member.role}</p>
               </div>
             </motion.div>
           ))}

@@ -7,7 +7,7 @@ export const Stats = () => {
     { label: 'Years Experience', value: '20+', icon: Award },
     { label: 'Local Projects', value: '800+', icon: CheckCircle2 },
     { label: '5-Star Reviews', value: '126+', icon: Star },
-    { label: 'Satisfaction Rate', value: '100%', icon: ThumbsUp },
+    { label: 'Satisfaction Rate', value: '100%', icon: ThumbsUp, nudge: "-mt-1" },
   ];
 
   return (
@@ -31,7 +31,7 @@ export const Stats = () => {
                 <div className="text-xs md:text-sm font-medium text-zinc-400 uppercase tracking-widest mb-6">
                   {stat.label}
                 </div>
-                {/* Larger Constant Pulsing Purple Icon */}
+                {/* Refined Constant Pulsing Purple Icon */}
                 <motion.div
                   initial={{ scale: 0.8, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
@@ -44,18 +44,17 @@ export const Stats = () => {
                   }}
                   className="relative flex items-center justify-center p-2"
                 >
-                  {/* Subtle pulsing background glow */}
                   <motion.div 
-                    animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute inset-0 bg-brand/30 blur-xl rounded-full" 
+                    animate={{ scale: [1, 1.25, 1], opacity: [0.2, 0.4, 0.2] }}
+                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute inset-0 bg-brand/25 blur-xl rounded-full" 
                   />
                   <motion.div
-                    animate={{ scale: [1, 1.15, 1] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    className="relative z-10"
+                    animate={{ scale: [1, 1.1, 1] }}
+                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+                    className={`relative z-10 ${stat.nudge || ""}`}
                   >
-                    <Icon className="w-8 h-8 md:w-10 md:h-10 text-brand fill-brand/10" />
+                    <Icon className="w-7 h-7 md:w-8 md:h-8 text-brand fill-brand/5" />
                   </motion.div>
                 </motion.div>
               </motion.div>

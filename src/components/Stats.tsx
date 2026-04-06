@@ -13,7 +13,7 @@ export const Stats = () => {
   return (
     <section className="py-24 md:py-32 bg-white relative z-20 border-b border-zinc-100 overflow-hidden">
       {/* Decorative Background Glow — CSS only, no framer animate loop */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-accent/8 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-accent/8 rounded-full blur-[120px] pointer-events-none hidden md:block" />
 
       <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-y-12 gap-x-4 md:gap-16">

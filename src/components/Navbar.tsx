@@ -115,7 +115,7 @@ export const Navbar = ({ onOpenEstimate, isMobileMenuOpen, setIsMobileMenuOpen }
                 opacity: [0.15, 0.25, 0.15]
               }}
               transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none"
+              className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none hidden md:block"
             />
             <motion.div 
               animate={{ 
@@ -123,7 +123,7 @@ export const Navbar = ({ onOpenEstimate, isMobileMenuOpen, setIsMobileMenuOpen }
                 opacity: [0.1, 0.2, 0.1]
               }}
               transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#e41fe1]/10 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3 pointer-events-none"
+              className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#e41fe1]/10 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3 pointer-events-none hidden md:block"
             />
 
             {/* Header inside overlay */}
@@ -168,7 +168,7 @@ export const Navbar = ({ onOpenEstimate, isMobileMenuOpen, setIsMobileMenuOpen }
                       <span className="text-brand-light font-display font-black text-xs mb-1.5 opacity-80 group-hover:opacity-100 transition-opacity">
                         {(i + 1).toString().padStart(2, '0')}
                       </span>
-                      <span className="text-4xl sm:text-6xl font-black text-white group-hover:text-brand transition-colors duration-500 tracking-tighter">
+                      <span className="text-3xl sm:text-5xl font-black text-white group-hover:text-brand transition-colors duration-500 tracking-tighter">
                         {link.name}
                       </span>
                     </motion.a>

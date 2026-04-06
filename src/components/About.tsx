@@ -51,7 +51,7 @@ export const About = () => {
               <div className="text-[8px] md:text-sm font-bold uppercase tracking-widest opacity-80">Years of Trust</div>
             </motion.div>
             {/* Decorative Element — static, no animation */}
-            <div className="absolute -top-10 -left-10 w-48 md:w-64 h-48 md:h-64 bg-brand/5 rounded-full blur-3xl" />
+            <div className="absolute -top-10 -left-10 w-48 md:w-64 h-48 md:h-64 bg-brand/5 rounded-full blur-3xl hidden md:block" />
           </motion.div>
 
           <motion.div 

@@ -165,10 +165,10 @@ export const Navbar = ({ onOpenEstimate, isMobileMenuOpen, setIsMobileMenuOpen }
                       onClick={() => setIsMobileMenuOpen(false)}
                       className="flex items-end gap-6 group"
                     >
-                      <span className="text-brand font-display font-black text-sm mb-2 opacity-50 group-hover:opacity-100 transition-opacity">
+                      <span className="text-brand-light font-display font-black text-xs mb-1.5 opacity-80 group-hover:opacity-100 transition-opacity">
                         {(i + 1).toString().padStart(2, '0')}
                       </span>
-                      <span className="text-5xl sm:text-7xl font-black text-white group-hover:text-brand transition-colors duration-500 tracking-tighter">
+                      <span className="text-4xl sm:text-6xl font-black text-white group-hover:text-brand transition-colors duration-500 tracking-tighter">
                         {link.name}
                       </span>
                     </motion.a>
@@ -183,28 +183,7 @@ export const Navbar = ({ onOpenEstimate, isMobileMenuOpen, setIsMobileMenuOpen }
               </div>
             </div>
 
-            {/* Minimal Background Contact Info (Replacing Button) */}
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 1, duration: 1 }}
-              className="p-10 relative z-10 flex items-center justify-between"
-            >
-              <div className="flex flex-col gap-1">
-                <p className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest px-1">Connect</p>
-                <a href="tel:5862656607" className="text-lg font-bold text-white hover:text-brand transition-colors">
-                  (586) 265-6607
-                </a>
-              </div>
-              <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-brand hover:border-brand transition-all">
-                  <span className="text-xs font-bold">IG</span>
-                </div>
-                <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:text-brand hover:border-brand transition-all">
-                  <span className="text-xs font-bold">FB</span>
-                </div>
-              </div>
-            </motion.div>
+
           </motion.div>
         )}
       </AnimatePresence>

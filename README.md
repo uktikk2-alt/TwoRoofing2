@@ -8,7 +8,24 @@ This contains everything you need to run your app locally.
 
 View your app in AI Studio: https://ai.studio/apps/f547e604-895e-4878-a89e-b6c4e65f2a9a
 
-## Run Locally
+## 🔄 How to Sync Your Progress
+
+To manually push all your local changes to GitHub at any time, you have two easy options:
+
+### Option 1: Terminal Command (Recommended)
+Type this in your terminal and press Enter:
+```bash
+npm run sync
+```
+
+### Option 2: The "Easy Button" (Windows)
+1. Open your project folder (`G:\Two22Roofing`).
+2. Double-click the **`sync.bat`** file.
+3. A terminal will open, sync your changes, and then wait for you to press any key to close.
+
+---
+
+## Technical Details
 
 **Prerequisites:**  Node.js
 

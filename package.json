@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit",
-    "sync": "git add . && git commit -m 'sync' && git push"
+    "sync": "git add . && (git commit -m \"sync\" || echo No changes to commit) && git push"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",

@@ -9,6 +9,7 @@ import { Team } from './components/Team';
 import { Testimonials } from './components/Testimonials';
 import { Projects } from './components/Projects';
 import { EstimateSection } from './components/EstimateSection';
+import { Guarantee } from './components/Guarantee';
 import { Footer } from './components/Footer';
 import RoofingAIAgent from './components/RoofingAIAgent';
 import EstimateModal from './components/EstimateModal';
@@ -47,6 +48,7 @@ export default function App() {
         <Testimonials />
         <Projects />
         <EstimateSection onOpenEstimate={openEstimate} />
+        <Guarantee />
         <Footer />
         {!isMobileMenuOpen && <RoofingAIAgent />}
         <EstimateModal isOpen={isEstimateModalOpen} onClose={closeEstimate} />

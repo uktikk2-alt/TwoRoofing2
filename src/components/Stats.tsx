@@ -7,7 +7,7 @@ export const Stats = () => {
     { label: 'Years Experience', value: '20+', icon: Award },
     { label: 'Local Projects', value: '800+', icon: CheckCircle2 },
     { label: '5-Star Reviews', value: '126+', icon: Star },
-    { label: 'Satisfaction Rate', value: '100%', icon: ThumbsUp, nudge: "-mt-1" },
+    { label: 'Satisfaction Rate', value: '100%', icon: ThumbsUp, nudge: "-translate-y-1.5" },
   ];
 
   return (
@@ -52,7 +52,7 @@ export const Stats = () => {
                   <motion.div
                     animate={{ scale: [1, 1.1, 1] }}
                     transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                    className={`relative z-10 ${stat.nudge || ""}`}
+                    className={`relative z-10 flex items-center justify-center ${stat.nudge || ""}`}
                   >
                     <Icon className="w-7 h-7 md:w-8 md:h-8 text-brand fill-brand/5" />
                   </motion.div>

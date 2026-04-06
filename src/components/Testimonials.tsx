@@ -57,7 +57,7 @@ export const Testimonials = () => {
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-5 md:gap-6">
+        <div className="grid md:grid-cols-3 gap-6 md:gap-8">
           {reviews.map((review, i) => (
             <motion.div
               key={review.name}
@@ -69,11 +69,11 @@ export const Testimonials = () => {
                 ease: [0.25, 1, 0.5, 1],
                 delay: i * 0.1 
               }}
-              className="bg-white p-8 md:p-10 rounded-3xl border border-zinc-100 hover:border-zinc-200 hover:shadow-xl hover:-translate-y-1 transition-all duration-500 flex flex-col items-start"
+              className="bg-[#f8fafc] p-10 md:p-12 rounded-[2.5rem] border border-zinc-100/50 shadow-[0_20px_50px_rgba(147,51,234,0.06)] hover:shadow-[0_20px_50px_rgba(147,51,234,0.12)] hover:-translate-y-1 transition-all duration-500 flex flex-col items-start"
             >
-              <Quote className="w-10 h-10 text-brand mb-6 opacity-30" />
+              <Quote className="w-12 h-12 text-brand mb-8 fill-brand opacity-80" />
               
-              <p className="text-zinc-700 text-lg md:text-xl font-medium leading-relaxed mb-10">
+              <p className="text-zinc-900 text-lg md:text-xl font-bold leading-snug mb-10 tracking-tight">
                 {review.content}
               </p>
 
@@ -85,7 +85,7 @@ export const Testimonials = () => {
                   className="w-12 h-12 rounded-full object-cover"
                   referrerPolicy="no-referrer"
                 />
-                <div className="font-bold text-zinc-900 text-base">
+                <div className="font-bold text-zinc-900 text-lg tracking-tight">
                   {review.name}
                 </div>
               </div>

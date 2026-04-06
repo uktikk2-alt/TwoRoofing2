@@ -3,15 +3,14 @@ import { Phone } from 'lucide-react';
 
 export const Team = () => {
   const team = [
-    { name: 'Wendell', role: 'Owner & Founder', phone: '(586) 265-6607', image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop' },
-    { name: 'Rhonda', role: 'Owner & Operations', phone: '(586) 307-2872', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976&auto=format&fit=crop' },
-    { name: 'Our Crew', role: 'Expert Installers', phone: '(586) 265-6607', image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=2070&auto=format&fit=crop' },
+    { name: 'Wendell', role: 'Owner', phone: '(586) 265-6607', image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop' },
+    { name: 'Rhonda', role: 'Owner', phone: '(586) 307-2872', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976&auto=format&fit=crop' },
   ];
 
   return (
-    <section id="team" className="py-24 md:py-32 bg-zinc-900 text-white overflow-hidden">
+    <section id="team" className="py-20 md:py-24 bg-zinc-900 text-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
+        <div className="text-center max-w-3xl mx-auto mb-14 md:mb-20">
           <motion.span 
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -37,11 +36,11 @@ export const Team = () => {
             transition={{ delay: 0.2, duration: 0.6 }}
             className="text-zinc-400 text-lg leading-relaxed"
           >
-            Meet the dedicated experts who bring decades of combined experience to every project we undertake.
+            Meet the dedicated owners who bring decades of combined experience to every project we undertake.
           </motion.p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-12 md:gap-16">
+        <div className="grid md:grid-cols-2 gap-12 md:gap-16 max-w-4xl mx-auto">
           {team.map((member, i) => (
             <motion.div
               key={member.name}

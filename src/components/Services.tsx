@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { ChevronRight, ChevronDown, Home, Shield, Hammer, Clock, HardHat, Droplets, Thermometer } from 'lucide-react';
+import { ArrowRight, ChevronDown } from 'lucide-react';
 
 export const Services = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => {
   const [showAll, setShowAll] = useState(false);
@@ -10,58 +10,50 @@ export const Services = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => 
       title: 'New Roof Installation',
       description: 'Experience state-of-the-art roofing solutions with our expert team. We deliver top-quality installations that protect and enhance your home\'s value.',
       image: '/new roof installation.jpg',
-      icon: Home
     },
     {
       title: 'Advanced Roof Inspections',
       description: 'Our cutting-edge inspection services detect potential issues early, ensuring your roof remains in peak condition and saving you from costly repairs.',
       image: '/Advanced Roof Inspections.jpg',
-      icon: Shield
     },
     {
       title: 'Efficient Roof Repair Solutions',
       description: 'From storm damage to minor leaks, our team provides swift and reliable repair services to safeguard your home against the elements.',
       image: '/Efficient Roof Repair Solutions.jpg',
-      icon: Hammer
     },
     {
       title: 'Comprehensive Roof Maintenance',
       description: 'Proactive maintenance plans designed to extend the life of your roof and ensure ongoing reliability through every season.',
       image: '/Comprehensive Roof Maintenance.jpg',
-      icon: Clock
     },
     {
       title: 'Home Improvement',
       description: 'Beyond roofing, we excel in home improvement projects, offering reliable repair and installation services that meet the highest standards.',
       image: '/Home Improvement.jpg',
-      icon: HardHat
     },
     {
       title: 'Siding Installation',
       description: 'Professional siding installation that enhances your home\'s exterior durability and aesthetic appeal with high-quality materials.',
       image: '/Siding Installation.jpg',
-      icon: Shield
     },
     {
       title: 'Gutters/Guards Installation',
       description: 'Expert gutter and guard installation to ensure proper drainage and protect your foundation from water-related damage.',
       image: '/GuttersGuards Installation.jpg',
-      icon: Droplets
     },
     {
       title: 'Attic Insulation',
       description: 'Enhance energy efficiency and maintain a comfortable indoor climate with our professional attic insulation services.',
       image: '/Attic Insulation.jpg',
-      icon: Thermometer
     }
   ];
 
   const displayedServices = showAll ? services : services.slice(0, 3);
 
   return (
-    <section id="services" className="py-24 md:py-32 bg-zinc-50 overflow-hidden">
+    <section id="services" className="py-20 md:py-24 bg-zinc-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 items-end mb-16 md:mb-24 gap-8 md:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 items-end mb-14 md:mb-20 gap-8 md:gap-12">
           <div className="max-w-2xl">
             <motion.span 
               initial={{ opacity: 0, x: -20 }}
@@ -120,20 +112,18 @@ export const Services = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => 
                       referrerPolicy="no-referrer"
                     />
                     <div className="absolute inset-0 bg-brand/0 group-hover:bg-brand/10 transition-colors duration-700 ease-out" />
-                    <div className="absolute top-6 right-6 w-12 h-12 bg-white rounded-2xl flex items-center justify-center text-brand shadow-xl transition-transform duration-500">
-                      <service.icon className="w-6 h-6" />
-                    </div>
                   </div>
                   <div className="p-6 sm:p-8 md:p-12 pb-10 sm:pb-14 md:pb-16">
                     <h3 className="text-xl md:text-3xl font-black text-zinc-900 mb-4 tracking-tight group-hover:text-brand transition-colors">{service.title}</h3>
                     <p className="text-zinc-500 mb-8 leading-relaxed text-sm md:text-base">{service.description}</p>
-                    <motion.button 
-                      whileHover={{ x: 5 }}
+                    <button 
                       onClick={onOpenEstimate}
-                      className="flex items-center gap-2 text-brand font-black transition-all text-base group/btn"
+                      className="group/btn relative inline-flex items-center gap-2.5 bg-brand/10 hover:bg-brand text-brand hover:text-white px-6 py-3 rounded-full font-black text-sm transition-all duration-500 overflow-hidden"
                     >
-                      Get an Estimate <ChevronRight className="w-5 h-5 group-hover/btn:translate-x-1 transition-transform" />
-                    </motion.button>
+                      <span className="relative z-10">Get an Estimate</span>
+                      <ArrowRight className="w-4 h-4 relative z-10 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                      <div className="absolute inset-0 bg-gradient-to-r from-brand via-brand-dark to-brand opacity-0 group-hover/btn:opacity-100 transition-opacity duration-500" />
+                    </button>
                   </div>
                 </motion.div>
               ))}

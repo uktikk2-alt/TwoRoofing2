@@ -4,7 +4,6 @@ import { ArrowRight, Phone, Zap } from 'lucide-react';
 export const Hero = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => {
   const { scrollY } = useScroll();
   const y1 = useTransform(scrollY, [0, 1000], [0, 200]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
   const scale = useTransform(scrollY, [0, 500], [1, 1.08]);
 
   // Premium Framer Motion Variants — opacity + translateY only (GPU-friendly)
@@ -128,21 +127,6 @@ export const Hero = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => {
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Scroll Indicator */}
-      <motion.div 
-        style={{ opacity }}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1, y: [0, 8, 0] }}
-        transition={{ 
-          opacity: { delay: 1.8, duration: 1 },
-          y: { duration: 3, repeat: Infinity, ease: "easeInOut" } 
-        }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-white/30"
-      >
-        <span className="text-[10px] font-black tracking-[0.4em] uppercase">Scroll to Explore</span>
-        <div className="w-px h-16 bg-gradient-to-b from-white/30 to-transparent" />
-      </motion.div>
     </section>
   );
 };

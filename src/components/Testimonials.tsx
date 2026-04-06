@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Star } from 'lucide-react';
+import { Star, ExternalLink } from 'lucide-react';
 
 export const Testimonials = () => {
   const reviews = [
@@ -23,10 +23,12 @@ export const Testimonials = () => {
     }
   ];
 
+  const googleReviewsUrl = "https://google.com/maps/place/222+Roofing+%26+Remodeling/@42.7462121,-85.9093664,8z/data=!4m7!3m6!1s0x882521e293ccf8ff:0xe0487b0636cb743f!8m2!3d42.64199!4d-82.8913337!15sChZ0d28yMiByb29maW5nIG1pY2hpZ2FuWhgiFnR3bzIyIHJvb2ZpbmcgbWljaGlnYW6SARJyb29maW5nX2NvbnRyYWN0b3KaASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVTlhkVGxJU2twUkVBReABAPoBBAgAEEs!16s%2Fg%2F11l3q55w_v?entry=tts&g_ep=EgoyMDI2MDQwMS4wIPu8ASoASAFQAw%3D%3D&skid=31b9f812-9fcb-4837-9d1d-e8c58373eae6";
+
   return (
-    <section id="reviews" className="py-24 md:py-32 bg-white">
+    <section id="reviews" className="py-20 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="text-center mb-16 md:mb-24">
+        <div className="text-center mb-14 md:mb-20">
           <motion.h2 
             initial={{ opacity: 0, y: 25 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -93,6 +95,41 @@ export const Testimonials = () => {
             </motion.div>
           ))}
         </div>
+
+        {/* Google Reviews Widget */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 1, 0.5, 1] }}
+          className="mt-16 md:mt-20 flex justify-center"
+        >
+          <a
+            href={googleReviewsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group relative inline-flex items-center gap-4 bg-white border-2 border-zinc-200 hover:border-brand/30 rounded-2xl md:rounded-3xl px-8 md:px-12 py-5 md:py-7 shadow-lg hover:shadow-2xl hover:shadow-brand/10 hover:-translate-y-1 transition-all duration-500 overflow-hidden"
+          >
+            <div className="absolute inset-0 bg-brand/5 translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-[0.25,1,0.5,1]" />
+            {/* Google "G" Icon */}
+            <div className="relative z-10 w-10 h-10 md:w-12 md:h-12 bg-white rounded-xl shadow-md flex items-center justify-center border border-zinc-100 group-hover:scale-110 transition-transform duration-500">
+              <svg viewBox="0 0 24 24" className="w-5 h-5 md:w-6 md:h-6">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 01-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4"/>
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+              </svg>
+            </div>
+            <div className="relative z-10">
+              <div className="flex items-center gap-1 mb-0.5">
+                {[...Array(5)].map((_, i) => <Star key={i} className="w-3.5 h-3.5 text-yellow-400 fill-current" />)}
+                <span className="text-zinc-900 font-black text-sm ml-1">4.9</span>
+              </div>
+              <span className="text-zinc-900 font-black text-base md:text-lg">See more reviews on Google</span>
+            </div>
+            <ExternalLink className="w-5 h-5 text-zinc-400 group-hover:text-brand relative z-10 transition-colors duration-300" />
+          </a>
+        </motion.div>
       </div>
     </section>
   );

@@ -46,7 +46,7 @@ export default function App() {
         <Team />
         <Testimonials />
         <Projects />
-        <EstimateSection />
+        <EstimateSection onOpenEstimate={openEstimate} />
         <Footer />
         {!isMobileMenuOpen && <RoofingAIAgent />}
         <EstimateModal isOpen={isEstimateModalOpen} onClose={closeEstimate} />

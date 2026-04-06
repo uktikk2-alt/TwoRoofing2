@@ -3,7 +3,7 @@ import { CheckCircle2 } from 'lucide-react';
 
 export const About = () => {
   return (
-    <section id="about" className="py-24 md:py-32 bg-white overflow-hidden">
+    <section id="about" className="py-20 md:py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 md:gap-24 items-center">
           <motion.div 
@@ -39,16 +39,16 @@ export const About = () => {
               />
               <div className="absolute inset-0 bg-brand/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
-            {/* Floating Badge — CSS animation only, no framer loop */}
+            {/* Floating Badge — animated with premium styling */}
             <motion.div 
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5, duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-              className="absolute -bottom-2 -right-2 md:-bottom-10 md:-right-10 z-20 bg-brand-accent text-white p-4 md:p-10 rounded-xl md:rounded-[2rem] shadow-2xl animate-[float_6s_ease-in-out_infinite]"
+              className="absolute -bottom-2 -right-2 md:-bottom-10 md:-right-10 z-20 bg-gradient-to-br from-brand to-brand-dark text-white p-4 md:p-10 rounded-xl md:rounded-[2rem] shadow-2xl shadow-brand/30 animate-[float_6s_ease-in-out_infinite] hover:scale-105 transition-transform duration-500"
             >
-              <div className="text-xl md:text-5xl font-black mb-1">28+</div>
-              <div className="text-[8px] md:text-sm font-bold uppercase tracking-widest opacity-80">Years of Trust</div>
+              <div className="text-xl md:text-5xl font-black mb-1">20+</div>
+              <div className="text-[8px] md:text-sm font-bold uppercase tracking-widest opacity-90">Years of Experience</div>
             </motion.div>
             {/* Decorative Element — static, no animation */}
             <div className="absolute -top-10 -left-10 w-48 md:w-64 h-48 md:h-64 bg-brand/5 rounded-full blur-3xl hidden md:block" />
@@ -118,12 +118,6 @@ export const About = () => {
                 </div>
               ))}
             </div>
-
-            <button 
-              className="w-full sm:w-auto bg-zinc-900 text-white px-8 md:px-10 py-4 md:py-5 rounded-full font-black text-base md:text-lg shadow-xl hover:bg-zinc-800 hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-300"
-            >
-              Learn Our Story
-            </button>
           </motion.div>
         </div>
       </div>

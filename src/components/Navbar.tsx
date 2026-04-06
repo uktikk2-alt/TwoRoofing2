@@ -37,12 +37,12 @@ export const Navbar = ({ onOpenEstimate, isMobileMenuOpen, setIsMobileMenuOpen }
 
   return (
     <nav className={cn(
-      "fixed top-0 left-0 right-0 z-50 transition-all duration-500 px-4 py-4 md:px-6",
-      isScrolled ? "bg-white/80 backdrop-blur-xl shadow-sm py-3" : "bg-transparent"
+      "fixed top-0 left-0 right-0 z-50 transition-[background-color,padding,box-shadow] duration-300 px-4 py-4 md:px-6",
+      isScrolled ? "bg-white/90 backdrop-blur-sm shadow-sm py-3" : "bg-transparent"
     )}>
       <div className={cn(
-        "max-w-7xl mx-auto flex items-center justify-between transition-all duration-500 w-full",
-        !isScrolled && "bg-zinc-900/40 backdrop-blur-xl border border-white/10 rounded-2xl md:rounded-none md:bg-transparent md:border-none px-4 md:px-6 py-3 md:p-0"
+        "max-w-7xl mx-auto flex items-center justify-between w-full",
+        !isScrolled && "bg-zinc-900/60 border border-white/10 rounded-2xl md:rounded-none md:bg-transparent md:border-none px-4 md:px-6 py-3 md:p-0"
       )}>
         <Logo isScrolled={isScrolled} />
 
@@ -104,27 +104,8 @@ export const Navbar = ({ onOpenEstimate, isMobileMenuOpen, setIsMobileMenuOpen }
             transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
             className="fixed inset-0 z-[100] bg-zinc-950 md:hidden flex flex-col overflow-hidden"
           >
-            {/* Premium Noise Texture & Gradient */}
-            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay pointer-events-none" />
+            {/* Subtle gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-b from-zinc-950 via-zinc-950/95 to-zinc-950 pointer-events-none" />
-
-            {/* Subtle Animated Background Glow */}
-            <motion.div 
-              animate={{ 
-                scale: [1, 1.1, 1],
-                opacity: [0.15, 0.25, 0.15]
-              }}
-              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-              className="absolute top-0 right-0 w-[500px] h-[500px] bg-brand/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3 pointer-events-none hidden md:block"
-            />
-            <motion.div 
-              animate={{ 
-                scale: [1, 1.2, 1],
-                opacity: [0.1, 0.2, 0.1]
-              }}
-              transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-              className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#e41fe1]/10 rounded-full blur-[100px] translate-y-1/3 -translate-x-1/3 pointer-events-none hidden md:block"
-            />
 
             {/* Header inside overlay */}
             <div className="flex items-center justify-between p-6 relative z-10">

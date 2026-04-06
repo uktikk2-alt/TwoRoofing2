@@ -31,7 +31,7 @@ export const Stats = () => {
                 <div className="text-xs md:text-sm font-medium text-zinc-400 uppercase tracking-widest mb-4 md:mb-6">
                   {stat.label}
                 </div>
-                {/* Refined Constant Pulsing Purple Icon */}
+                {/* Refined Pulsing Purple Icon — CSS-only for performance */}
                 <motion.div
                   initial={{ scale: 0.8, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
@@ -44,18 +44,10 @@ export const Stats = () => {
                   }}
                   className="relative flex items-center justify-center p-2"
                 >
-                  <motion.div 
-                    animate={{ scale: [1, 1.25, 1], opacity: [0.2, 0.4, 0.2] }}
-                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                    className="absolute inset-0 bg-brand/25 blur-xl rounded-full" 
-                  />
-                  <motion.div
-                    animate={{ scale: [1, 1.1, 1] }}
-                    transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
-                    className={`relative z-10 flex items-center justify-center ${stat.nudge || ""}`}
-                  >
+                  <div className="absolute inset-0 bg-brand/20 rounded-full animate-[pulse_2.5s_ease-in-out_infinite]" />
+                  <div className={`relative z-10 flex items-center justify-center animate-[pulse_2.5s_ease-in-out_infinite] ${stat.nudge || ""}`}>
                     <Icon className="w-7 h-7 md:w-8 md:h-8 text-brand fill-brand/5" />
-                  </motion.div>
+                  </div>
                 </motion.div>
               </motion.div>
             );

@@ -96,7 +96,7 @@ export default function RoofingAIAgent() {
             whileHover={{ scale: 1.05, y: -4 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[80] bg-white/80 backdrop-blur-xl border border-brand/10 text-brand p-3.5 md:p-4 rounded-full shadow-xl shadow-brand/15 hover:shadow-2xl hover:shadow-brand/25 flex items-center justify-center group transition-all duration-300"
+            className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[80] bg-white/90 backdrop-blur-sm border border-brand/10 text-brand p-3.5 md:p-4 rounded-full shadow-xl shadow-brand/15 hover:shadow-2xl hover:shadow-brand/25 flex items-center justify-center group transition-[transform,box-shadow] duration-300"
           >
             <MessageSquare className="w-5 h-5 md:w-6 md:h-6" />
             <span className="absolute top-0 right-0 w-2.5 h-2.5 bg-brand rounded-full border-2 border-white" />
@@ -154,11 +154,7 @@ export default function RoofingAIAgent() {
                       m.role === 'user' ? "bg-white border border-zinc-100 p-1" : "bg-brand text-white"
                     )}>
                       {m.role === 'user' ? (
-                        <img 
-                          src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=1974&auto=format&fit=crop" 
-                          className="w-full h-full rounded-lg object-cover" 
-                          referrerPolicy="no-referrer"
-                        />
+                        <User className="w-4 h-4 text-zinc-500" />
                       ) : (
                         <Bot className="w-5 h-5" />
                       )}

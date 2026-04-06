@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useScroll, useSpring, motion } from 'motion/react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Stats } from './components/Stats';
@@ -18,20 +17,12 @@ import { LenisProvider } from './components/ui/LenisProvider';
 const SectionDivider = () => (
   <div className="w-full h-px relative z-10 flex justify-center overflow-hidden">
     <div className="w-full h-full bg-gradient-to-r from-transparent via-brand/[0.16] to-transparent" />
-    {/* Subtle soft glow layer */}
-    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-brand/[0.08] to-transparent blur-[2px] -translate-y-1/2" />
   </div>
 );
 
 export default function App() {
   const [isEstimateModalOpen, setIsEstimateModalOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001
-  });
 
   const openEstimate = () => setIsEstimateModalOpen(true);
   const closeEstimate = () => setIsEstimateModalOpen(false);
@@ -39,10 +30,6 @@ export default function App() {
   return (
     <LenisProvider>
       <div className="relative flex min-h-screen flex-col overflow-x-clip w-full">
-        <motion.div
-          className="fixed top-0 left-0 right-0 h-1 bg-brand-accent z-[100] origin-left"
-          style={{ scaleX }}
-        />
         <Navbar 
           onOpenEstimate={openEstimate} 
           isMobileMenuOpen={isMobileMenuOpen}

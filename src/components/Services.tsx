@@ -100,7 +100,7 @@ export const Services = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => 
                     duration: 0.7, 
                     ease: [0.25, 1, 0.5, 1] 
                   }}
-                  className="group bg-white rounded-2xl overflow-hidden border border-zinc-200/80 hover:border-zinc-300 hover:shadow-lg hover:-translate-y-1 transition-all duration-500"
+                  className="group bg-white rounded-2xl overflow-hidden border border-zinc-200/80 hover:border-zinc-300 hover:shadow-lg hover:-translate-y-1 transition-[border-color,box-shadow,transform] duration-500"
                 >
                   <div className="h-56 md:h-64 overflow-hidden relative bg-zinc-100">
                     <img 

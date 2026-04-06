@@ -43,8 +43,6 @@ export const Team = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 md:gap-12 max-w-5xl mx-auto relative px-4">
-          {/* Subtle background decorative element to fill space */}
-          <div className="absolute inset-0 -z-10 bg-brand/5 blur-[120px] rounded-full scale-150 opacity-50" />
           {team.map((member, i) => (
             <motion.div
               key={member.name}
@@ -52,14 +50,14 @@ export const Team = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-20px" }}
               transition={{ delay: i * 0.12, duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
-              className="group bg-zinc-800/40 backdrop-blur-sm border border-white/5 rounded-[2.5rem] overflow-hidden hover:border-brand/30 transition-all duration-700 hover:shadow-2xl hover:shadow-brand/10"
+              className="group bg-zinc-800/40 backdrop-blur-sm border border-white/5 rounded-[2.5rem] overflow-hidden hover:border-brand/30 transition-[border-color,box-shadow] duration-700 hover:shadow-2xl hover:shadow-brand/10"
             >
               <div className="relative aspect-[3/4] overflow-hidden">
                 <img 
                   loading="lazy"
                   src={member.image} 
                   alt={member.name} 
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-[filter,transform] duration-700 group-hover:scale-105"
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent" />

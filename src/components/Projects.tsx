@@ -41,7 +41,7 @@ export const Projects = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-20px" }}
               transition={{ delay: i * 0.1, duration: 0.7, ease: [0.25, 1, 0.5, 1] }}
-              className="group relative aspect-[4/5] rounded-2xl overflow-hidden border border-zinc-200/80 hover:shadow-lg transition-all duration-500"
+              className="group relative aspect-[4/5] rounded-2xl overflow-hidden border border-zinc-200/80 hover:shadow-lg transition-shadow duration-500"
             >
               <img 
                 loading="lazy"

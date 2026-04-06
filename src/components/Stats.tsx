@@ -28,10 +28,10 @@ export const Stats = () => {
                 <div className="text-3xl md:text-5xl font-black text-zinc-900 mb-1 md:mb-2 font-display">
                   <Counter value={stat.value} />
                 </div>
-                <div className="text-xs md:text-sm font-medium text-zinc-400 uppercase tracking-widest mb-4">
+                <div className="text-xs md:text-sm font-medium text-zinc-400 uppercase tracking-widest mb-6">
                   {stat.label}
                 </div>
-                {/* Animated Purple Icon */}
+                {/* Larger Constant Pulsing Purple Icon */}
                 <motion.div
                   initial={{ scale: 0.8, opacity: 0 }}
                   whileInView={{ scale: 1, opacity: 1 }}
@@ -42,10 +42,21 @@ export const Stats = () => {
                     type: "spring",
                     stiffness: 200
                   }}
-                  className="relative"
+                  className="relative flex items-center justify-center p-2"
                 >
-                  <div className="absolute inset-0 bg-brand/20 blur-lg rounded-full" />
-                  <Icon className="w-5 h-5 md:w-6 md:h-6 text-brand relative z-10 animate-[pulse_3s_ease-in-out_infinite]" />
+                  {/* Subtle pulsing background glow */}
+                  <motion.div 
+                    animate={{ scale: [1, 1.2, 1], opacity: [0.2, 0.4, 0.2] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute inset-0 bg-brand/30 blur-xl rounded-full" 
+                  />
+                  <motion.div
+                    animate={{ scale: [1, 1.15, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                    className="relative z-10"
+                  >
+                    <Icon className="w-8 h-8 md:w-10 md:h-10 text-brand fill-brand/10" />
+                  </motion.div>
                 </motion.div>
               </motion.div>
             );

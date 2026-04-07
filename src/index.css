@@ -50,10 +50,17 @@
 
 @keyframes brandGlow {
   0%, 100% { 
-    text-shadow: 0 0 20px rgba(121, 31, 120, 0.2), 0 0 40px rgba(121, 31, 120, 0.08);
+    text-shadow: 0 0 8px rgba(121, 31, 120, 0.15);
+    opacity: 0.95;
   }
   50% { 
-    text-shadow: 0 0 30px rgba(121, 31, 120, 0.5), 0 0 60px rgba(121, 31, 120, 0.2), 0 0 80px rgba(121, 31, 120, 0.08);
+    text-shadow: 0 0 16px rgba(121, 31, 120, 0.3);
+    opacity: 1;
   }
+}
+
+.gpu-promote {
+  will-change: transform, opacity;
+  transform: translateZ(0);
 }
 

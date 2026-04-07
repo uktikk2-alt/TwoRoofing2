@@ -21,7 +21,7 @@ export const BusinessHours = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-          className="bg-white rounded-[2rem] border border-zinc-200 shadow-xl shadow-zinc-200/50 overflow-hidden"
+          className="bg-white rounded-[2rem] border border-zinc-200 shadow-lg shadow-zinc-200/30 overflow-hidden gpu-promote"
         >
           {/* Header */}
           <div className="p-8 md:p-10 border-b border-zinc-100 bg-zinc-50/30">

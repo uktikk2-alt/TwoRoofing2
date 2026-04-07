@@ -10,7 +10,7 @@ export const EstimateSection = ({ onOpenEstimate }: { onOpenEstimate: () => void
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-20px" }}
           transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-          className="bg-zinc-900 rounded-3xl md:rounded-[2.5rem] p-8 sm:p-12 md:p-16 lg:p-20 relative overflow-hidden"
+          className="bg-zinc-900 rounded-3xl md:rounded-[2.5rem] p-8 sm:p-12 md:p-16 lg:p-20 relative overflow-hidden gpu-promote"
         >
           {/* Subtle top border glow */}
           <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
@@ -33,7 +33,7 @@ export const EstimateSection = ({ onOpenEstimate }: { onOpenEstimate: () => void
                transition={{ delay: 0.1, duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
                className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 md:mb-6 tracking-tight text-white leading-tight md:leading-[1.05] max-w-[90%]"
             >
-              Request Your <span className="text-brand animate-[brandGlow_4s_ease-in-out_infinite] opacity-90 drop-shadow-sm">Free Estimate</span>
+              Request Your <span className="text-brand animate-[brandGlow_4s_ease-in-out_infinite]">Free Estimate</span>
             </motion.h3>
             <motion.p 
                initial={{ opacity: 0 }}

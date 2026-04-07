@@ -17,7 +17,7 @@ export const Guarantee = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-20px" }}
           transition={{ duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-          className="max-w-4xl mx-auto text-center"
+          className="max-w-4xl mx-auto text-center gpu-promote"
         >
           <div className="flex justify-center mb-4 md:mb-6">
             <motion.div 
@@ -49,11 +49,10 @@ export const Guarantee = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-20px" }}
                   transition={{ delay: 0.2 + (i * 0.1), duration: 0.7 }}
-                  className="group relative flex flex-col items-center p-6 md:p-8 rounded-[2rem] bg-zinc-50/50 border border-zinc-100 hover:border-brand/30 hover:bg-white hover:shadow-2xl hover:shadow-brand/5 transition-all duration-500 hover:-translate-y-1.5"
+                  className="group relative flex flex-col items-center p-6 md:p-8 rounded-[2rem] bg-zinc-50/50 border border-zinc-100 hover:border-brand/30 hover:bg-white hover:shadow-xl hover:shadow-brand/5 transition-all duration-300 hover:-translate-y-1 gpu-promote"
                 >
-                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-white shadow-sm border border-zinc-100 flex items-center justify-center mb-4 md:mb-6 group-hover:scale-110 transition-transform duration-500">
-                    <div className="absolute inset-0 bg-brand/5 rounded-2xl group-hover:bg-brand/10 transition-colors" />
-                    <Icon className="w-7 h-7 md:w-8 md:h-8 text-brand relative z-10" />
+                  <div className="w-14 h-14 md:w-16 md:h-16 rounded-2xl bg-brand/5 border border-zinc-100 flex items-center justify-center mb-4 md:mb-6 group-hover:scale-105 transition-transform duration-300">
+                    <Icon className="w-7 h-7 md:w-8 md:h-8 text-brand" />
                   </div>
                   <span className="text-zinc-900 text-sm md:text-base font-black tracking-tight leading-none">
                     {feature.title}

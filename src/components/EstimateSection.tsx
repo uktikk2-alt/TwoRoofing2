@@ -31,9 +31,9 @@ export const EstimateSection = ({ onOpenEstimate }: { onOpenEstimate: () => void
                whileInView={{ opacity: 1, y: 0 }}
                viewport={{ once: true, margin: "-20px" }}
                transition={{ delay: 0.1, duration: 0.8, ease: [0.25, 1, 0.5, 1] }}
-               className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-3 md:mb-4 tracking-tight text-white leading-[1.1]"
+               className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black mb-4 md:mb-6 tracking-tight text-white leading-tight md:leading-[1.05] max-w-[90%]"
             >
-              Request Your <span className="text-brand animate-[brandGlow_4s_ease-in-out_infinite]">Free Estimate</span>
+              Request Your <span className="text-brand animate-[brandGlow_4s_ease-in-out_infinite] opacity-90 drop-shadow-sm">Free Estimate</span>
             </motion.h3>
             <motion.p 
                initial={{ opacity: 0 }}
@@ -45,7 +45,7 @@ export const EstimateSection = ({ onOpenEstimate }: { onOpenEstimate: () => void
               Schedule your professional inspection today. Wendell or Rhonda will contact you within 24 hours.
             </motion.p>
             
-            <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 mb-8 md:mb-10">
+            <div className="flex flex-wrap justify-center gap-x-10 gap-y-4 mb-10 md:mb-14">
               {[
                 "No-Obligation Inspection",
                 "Detailed Damage Report",
@@ -57,9 +57,9 @@ export const EstimateSection = ({ onOpenEstimate }: { onOpenEstimate: () => void
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-20px" }}
                   transition={{ delay: 0.3 + (i * 0.1) }}
-                  className="flex items-center gap-2 text-zinc-300 text-sm font-medium"
+                  className="flex items-center gap-2.5 text-zinc-300 text-sm md:text-base font-medium"
                 >
-                  <CheckCircle2 className="w-4 h-4 text-brand flex-shrink-0" />
+                  <CheckCircle2 className="w-5 h-5 text-brand flex-shrink-0" />
                   <span>{item}</span>
                 </motion.div>
               ))}

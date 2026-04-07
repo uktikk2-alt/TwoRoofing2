@@ -5,17 +5,17 @@ export const Testimonials = () => {
   const reviews = [
     {
       name: 'John Bennett',
-      content: 'Two22 came out same day and fixed the shingles on my roof before it rained. Always responsive and good quality work at an affordable price. I will keep using this company and recommend them to others.',
+      content: 'Two22 came out same day and fixed the shingles on my roof before it rained. Always responsive and good quality work at an affordable price.',
       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=1974&auto=format&fit=crop'
     },
     {
       name: 'Tin Man',
-      content: 'Excellent service from start to finish! 222 Roofing did an amazing job on my roof. The crew showed up on time, worked efficiently, and cleaned up everything before they left. The quality of their work is top-notch, and they took the time to explain what needed to be done and why.',
+      content: 'Excellent service! The crew showed up on time, worked efficiently, and cleaned up everything. The quality of their work is top-notch and professional.',
       image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1974&auto=format&fit=crop'
     },
     {
       name: 'T Gurecki',
-      content: 'Wendel is very professional and prompt. He listened to my concerns and addressed my issues and other issues he discovered. Very honest and hard working. I highly recommend Wendel and his company.',
+      content: 'Wendel is very professional, prompt, and honest. He addressed all my concerns and worked hard. I highly recommend him and his company.',
       image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1976&auto=format&fit=crop'
     }
   ];
@@ -66,7 +66,7 @@ export const Testimonials = () => {
               className="relative flex flex-col pt-4 overflow-visible"
             >
               {/* Speech Bubble / Card */}
-              <div className="relative bg-white p-8 md:p-10 rounded-[2.5rem] shadow-2xl shadow-zinc-200/40 border border-zinc-100 flex flex-col h-full group/card">
+              <div className="relative bg-white p-6 md:p-10 rounded-[2.5rem] shadow-2xl shadow-zinc-200/40 border border-zinc-100 flex flex-col h-full group/card">
                 {/* Quote Icon */}
                 <div className="absolute top-6 right-8 text-brand/10 group-hover/card:text-brand/20 transition-colors">
                   <Quote className="w-10 h-10 md:w-12 md:h-12 fill-current" />
@@ -78,7 +78,7 @@ export const Testimonials = () => {
                   ))}
                 </div>
 
-                <p className="text-zinc-600 text-base md:text-xl leading-relaxed mb-10 flex-grow font-medium italic">
+                <p className="text-zinc-600 text-base md:text-xl leading-relaxed mb-6 md:mb-10 flex-grow font-medium italic">
                   "{review.content}"
                 </p>
                 

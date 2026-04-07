@@ -51,16 +51,16 @@ export const Services = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => 
   const displayedServices = showAll ? services : services.slice(0, 3);
 
   return (
-    <section id="services" className="py-12 md:py-16 bg-gradient-to-b from-white via-brand/[0.02] to-white">
+    <section id="services" className="pt-4 pb-12 md:py-16 bg-gradient-to-b from-white via-brand/[0.02] to-white">
       <div className="max-w-7xl mx-auto px-6">
         {/* Clean centered header */}
-        <div className="text-center max-w-3xl mx-auto mb-6 md:mb-8">
+        <div className="text-center max-w-3xl mx-auto mb-4 md:mb-8">
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 bg-white border border-zinc-200 rounded-full px-4 py-1.5 mb-2 md:mb-3"
+            className="inline-flex items-center gap-2 bg-white border border-zinc-200 rounded-full px-4 py-1.5 mb-1.5 md:mb-3"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-brand" />
             <span className="text-xs font-semibold text-zinc-600">Our Expertise</span>
@@ -70,7 +70,7 @@ export const Services = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => 
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-20px" }}
             transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 1, 0.5, 1] }}
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-zinc-900 leading-tight mb-3 md:mb-4 tracking-tight"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-zinc-900 leading-tight mb-2 md:mb-4 tracking-tight"
           >
             Professional Roofing Solutions
           </motion.h2>
@@ -135,11 +135,11 @@ export const Services = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => 
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-20px" }}
-          className="mt-8 md:mt-10 text-center relative z-20"
+          className="mt-2 md:mt-10 pt-6 md:pt-0 border-t border-zinc-100 md:border-none text-center relative z-20"
         >
           <button
             onClick={() => setShowAll(!showAll)}
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-white border border-zinc-200 rounded-full text-zinc-700 font-semibold text-sm hover:border-zinc-400 hover:shadow-sm transition-all duration-300"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-brand/20 hover:border-brand/40 rounded-full text-brand font-bold text-sm hover:bg-brand/5 shadow-sm transition-all duration-300"
           >
             {showAll ? 'Show Less' : 'Show All Services'}
             <motion.div

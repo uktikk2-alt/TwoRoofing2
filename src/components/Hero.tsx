@@ -35,7 +35,7 @@ export const Hero = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => {
   };
 
   return (
-    <section className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-zinc-950 py-16 md:py-0">
+    <section className="relative min-h-[90vh] md:min-h-screen flex items-center justify-center overflow-hidden bg-zinc-950 pt-12 pb-16 md:py-0">
       {/* Background Image — cinematic scroll-linked animations */}
       <motion.div 
         initial={{ opacity: 0, scale: 1.1 }}
@@ -57,7 +57,7 @@ export const Hero = ({ onOpenEstimate }: { onOpenEstimate: () => void }) => {
         <div className="absolute inset-0 bg-gradient-to-r from-zinc-950/30 via-transparent to-zinc-950/30" />
       </motion.div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 text-center pt-24 md:pt-0 w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 text-center pt-16 md:pt-0 w-full">
         <motion.div
           variants={container}
           initial="hidden"

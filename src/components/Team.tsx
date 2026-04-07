@@ -3,8 +3,8 @@ import { Phone } from 'lucide-react';
 
 export const Team = () => {
   const team = [
-    { name: 'Wendell', role: 'Owner', phone: '(586) 265-6607', image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop' },
-    { name: 'Rhonda', role: 'Owner', phone: '(586) 307-2872', image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=1976&auto=format&fit=crop' },
+    { name: 'Wendell', role: 'Owner', phone: '(586) 265-6607', image: '/wendell.jpeg', objectPosition: 'center 15%' },
+    { name: 'Rhonda', role: 'Owner', phone: '(586) 307-2872', image: '/Rhonda.jpeg', objectPosition: 'center 5%' },
   ];
 
   return (
@@ -57,7 +57,8 @@ export const Team = () => {
                   loading="lazy"
                   src={member.image} 
                   alt={member.name} 
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-[filter,transform] duration-700 group-hover:scale-105"
+                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-[filter,transform,object-position] duration-700 group-hover:scale-105"
+                  style={{ objectPosition: member.objectPosition }}
                   referrerPolicy="no-referrer"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent" />
@@ -70,7 +71,7 @@ export const Team = () => {
               </div>
               <div className="p-8 md:p-10 text-center">
                 <h3 className="text-2xl md:text-3xl font-black mb-2 tracking-tight group-hover:text-brand transition-colors duration-500">{member.name}</h3>
-                <p className="text-xs md:text-sm font-bold text-brand uppercase tracking-[0.2em]">{member.role} & Founder</p>
+                <p className="text-xs md:text-sm font-bold text-brand uppercase tracking-[0.2em]">{member.role}</p>
               </div>
             </motion.div>
           ))}

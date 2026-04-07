@@ -24,6 +24,8 @@ interface Message {
 
 export default function RoofingAIAgent() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
+  const scrollTimeout = useRef<NodeJS.Timeout | null>(null);
   const [messages, setMessages] = useState<Message[]>([
     { 
       role: 'assistant', 
@@ -35,6 +37,20 @@ export default function RoofingAIAgent() {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolling(true);
+      if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+      scrollTimeout.current = setTimeout(() => setIsScrolling(false), 500);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (scrollTimeout.current) clearTimeout(scrollTimeout.current);
+    };
+  }, []);
 
   useEffect(() => {
     if (scrollRef.current) {
@@ -90,13 +106,26 @@ export default function RoofingAIAgent() {
       <AnimatePresence>
         {!isOpen && (
           <motion.button
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1, transition: { delay: 2.5, duration: 0.8, ease: [0.25, 1, 0.5, 1] } }}
-            exit={{ scale: 0.8, opacity: 0, transition: { duration: 0.3 } }}
+            initial={{ scale: 0.8, opacity: 0, y: 20 }}
+            animate={{ 
+              scale: isScrolling ? 0.8 : 1, 
+              opacity: isScrolling ? 0 : 1, 
+              y: isScrolling ? 20 : 0,
+              transition: { 
+                type: "spring", 
+                stiffness: 260, 
+                damping: 20,
+                opacity: { duration: 0.2 },
+                // Keep the initial delay only for the very first entrance if needed, 
+                // but for scroll toggles we want immediate response.
+                duration: 0.3
+              } 
+            }}
+            exit={{ scale: 0.8, opacity: 0, y: 20, transition: { duration: 0.3 } }}
             whileHover={{ scale: 1.05, y: -4 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[80] bg-white/90 backdrop-blur-sm border border-brand/10 text-brand p-3.5 md:p-4 rounded-full shadow-xl shadow-brand/15 hover:shadow-2xl hover:shadow-brand/25 flex items-center justify-center group transition-[transform,box-shadow] duration-300"
+            className="fixed bottom-6 right-6 md:bottom-10 md:right-10 z-[80] bg-white/90 backdrop-blur-sm border border-brand/10 text-brand p-3.5 md:p-4 rounded-full shadow-xl shadow-brand/15 hover:shadow-2xl hover:shadow-brand/25 flex items-center justify-center group transition-[background-color,box-shadow] duration-300"
           >
             <MessageSquare className="w-5 h-5 md:w-6 md:h-6" />
             <span className="absolute top-0 right-0 w-2.5 h-2.5 bg-brand rounded-full border-2 border-white" />

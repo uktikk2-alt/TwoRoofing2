@@ -40,6 +40,12 @@
   scrollbar-width: none;
 }
 
+/* Enhanced scroll lock for mobile menu */
+.no-scroll {
+  overflow: hidden !important;
+  touch-action: none;
+}
+
 
 
 @keyframes brandGlow {

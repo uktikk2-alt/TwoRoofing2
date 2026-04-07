@@ -15,12 +15,15 @@ export const Navbar = ({ onOpenEstimate, isMobileMenuOpen, setIsMobileMenuOpen }
 
   useEffect(() => {
     if (isMobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.documentElement.classList.add('no-scroll');
+      document.body.classList.add('no-scroll');
     } else {
-      document.body.style.overflow = 'unset';
+      document.documentElement.classList.remove('no-scroll');
+      document.body.classList.remove('no-scroll');
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.documentElement.classList.remove('no-scroll');
+      document.body.classList.remove('no-scroll');
     };
   }, [isMobileMenuOpen]);
 
@@ -87,10 +90,10 @@ export const Navbar = ({ onOpenEstimate, isMobileMenuOpen, setIsMobileMenuOpen }
 
         {/* Mobile Toggle */}
         <button 
-          className={cn("md:hidden p-2 rounded-lg relative z-[110]", isScrolled ? "text-zinc-900" : "text-white")}
+          className={cn("md:hidden p-2 rounded-lg relative", isScrolled ? "text-zinc-900" : "text-white")}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          <Menu className="w-6 h-6" />
         </button>
       </div>
 

@@ -2,9 +2,9 @@ import { motion } from 'motion/react';
 
 export const Projects = () => {
   const projects = [
-    { title: 'Modern Metal Roof', location: 'Macomb, MI', image: 'https://images.unsplash.com/photo-1632759145351-1d592919f522?q=80&w=2070&auto=format&fit=crop' },
-    { title: 'Residential Shingle', location: 'Clinton Twp, MI', image: 'https://images.unsplash.com/photo-1635424710928-0544e8512eae?q=80&w=2071&auto=format&fit=crop' },
-    { title: 'Commercial Flat Roof', location: 'Sterling Heights, MI', image: 'https://images.unsplash.com/photo-1628744448840-55bab13ecfbd?q=80&w=2070&auto=format&fit=crop' },
+    { title: 'Modern Metal Roof', location: 'Macomb, MI', image: '/Project 1.jpeg' },
+    { title: 'Residential Shingle', location: 'Clinton Twp, MI', image: '/Project 2.jpeg' },
+    { title: 'Commercial Flat Roof', location: 'Sterling Heights, MI', image: '/Project 3.png' },
   ];
 
   return (

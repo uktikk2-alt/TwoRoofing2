@@ -6,11 +6,7 @@ import { cn } from '../lib/utils';
 
 // Safely handle API key. If missing, the agent will show an error message instead of crashing.
 const getApiKey = () => {
-  try {
-    return (process.env && process.env.GEMINI_API_KEY) || '';
-  } catch {
-    return '';
-  }
+  return import.meta.env.VITE_GEMINI_API_KEY || '';
 };
 
 const ai = new GoogleGenAI({ apiKey: getApiKey() });

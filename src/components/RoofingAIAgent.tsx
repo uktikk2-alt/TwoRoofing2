@@ -72,19 +72,19 @@ export default function RoofingAIAgent() {
       }
 
       const response = await ai.models.generateContent({
-        model: 'gemini-3-flash-preview',
+        model: 'gemini-2.5-flash',
         contents: [...messages, { role: 'user', content: textToSend }].map(m => ({
           role: m.role === 'assistant' ? 'model' : 'user',
           parts: [{ text: m.content }]
         })),
         config: {
-          systemInstruction: `You are the official TWO22ROOFING assistant. 
-          Respond to user queries about roofing in Macomb, Michigan.
-          - Offer: New Roof Installation, Repairs, Inspections, Maintenance, Siding, Gutters, Attic Insulation.
-          - Style: Professional, friendly, helpful.
-          - Owners: Wendell and Rhonda.
-          - Phone: (586) 265-6607 (Wendell), (586) 307-2872 (Rhonda).
-          - Be extremely concise.`,
+          systemInstruction: `You are the official TWO22ROOFING assistant. Act like a friendly human receptionist for Wendell and Rhonda.
+          CRITICAL RULES:
+          1. Be incredibly conversational and natural. Respond with only 1 or 2 short sentences at a time.
+          2. NEVER dump all your information at once. If someone says "Hi", just say hello back and ask how you can help.
+          3. DO NOT list all our services unless specifically asked. (For your knowledge, we offer: New Roofs, Repairs, Inspections, Siding, Gutters, Attic Insulation).
+          4. DO NOT provide the phone numbers ((586) 265-6607 or (586) 307-2872) UNLESS the user is ready to schedule an appointment, explicitly asks for a phone number, or implies an emergency.
+          5. Keep the tone warm, welcoming, and helpful. Guide the conversation step-by-step.`,
         }
       });
 
